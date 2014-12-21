@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clone Test</title>
+<style>
+body{
+font-size: 12px;
+font-family: sans-serif;
+}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+
+<script type="text/javascript">
+// normal array
+var arr1 = ['a','b'];
+var arrClone = FDLib.util.clone(arr1);
+arrClone[0] = 'ddd'; 
+alert(arr1[0] + ' -- ' + arrClone[0]);
+
+// object
+var obj = {name:'zhangsan'};
+var objClone = FDLib.util.clone(obj);
+objClone.name = 'lisi';
+alert(obj.name + ' -- ' + objClone.name);
+
+// array with object
+var objArr = [{name:'zhangsan',items:['zhangsan_item1',{itemName:'name_111'}]},{name:'lisi'}]
+var objArrClone = FDLib.util.clone(objArr);
+objArrClone[0].name = 'wangwu';
+objArrClone[0].items[0] = 'wangwu_item1';
+objArrClone[0].items[1].itemName = 'name_2222';
+
+alert(objArr[0].name + ' -- ' + objArrClone[0].name);
+alert(objArr[0].items[0] + ' -- ' + objArrClone[0].items[0]);
+alert(objArr[0].items[1].itemName + ' -- ' + objArrClone[0].items[1].itemName);
+
+var items = [
+     	{text:'英文add后',content:'<i>英文add后</i>',onclick:function(){return 11} } 
+     	,{text:'中文add后',content:'<b>中文add后</b>',onclick:function(){return 22;} }        
+     	             ];
+var itemsClone = FDLib.util.clone(items);
+itemsClone[0].text = '英文add后222222'
+itemsClone[0].onclick = function(){return 22};
+alert(items[0].text + ' -- ' + itemsClone[0].text + "  " + items[0].onclick())
+</script>
+</head>
+<body>
+<pre>
+// normal array
+var arr1 = ['a','b'];
+var arrClone = FDLib.util.clone(arr1);
+arrClone[0] = 'ddd'; 
+alert(arr1[0] + ' -- ' + arrClone[0]);
+
+// object
+var obj = {name:'zhangsan'};
+var objClone = FDLib.util.clone(obj);
+objClone.name = 'lisi';
+alert(obj.name + ' -- ' + objClone.name);
+
+// array with object
+var objArr = [{name:'zhangsan',items:['zhangsan_item1',{itemName:'name_111'}]},{name:'lisi'}]
+var objArrClone = FDLib.util.clone(objArr);
+objArrClone[0].name = 'wangwu';
+objArrClone[0].items[0] = 'wangwu_item1';
+objArrClone[0].items[1].itemName = 'name_2222';
+
+alert(objArr[0].name + ' -- ' + objArrClone[0].name);
+alert(objArr[0].items[0] + ' -- ' + objArrClone[0].items[0]);
+alert(objArr[0].items[1].itemName + ' -- ' + objArrClone[0].items[1].itemName);
+
+var items = [
+     	{text:'英文add后',content:'<i>英文add后</i>',onclick:function(){return 11} } 
+     	,{text:'中文add后',content:'<b>中文add后</b>',onclick:function(){return 22;} }        
+     	             ];
+var itemsClone = FDLib.util.clone(items);
+itemsClone[0].text = '英文add后222222'
+itemsClone[0].onclick = function(){return 22};
+alert(items[0].text + ' -- ' + itemsClone[0].text + "  " + items[0].onclick())
+</pre>
+</body>
+</html>

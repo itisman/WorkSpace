@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!-- lib js -->
+<script type="text/javascript" src="../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../src/FDLib/JString.js"></script>
+<link rel="stylesheet" type="text/css" media="screen,projection" href="./css/style_screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="./css/style_print.css" />
+<title>FDUI</title>
+<script type="text/javascript">
+window.onload=function() {
+	var iframe = document.getElementById('iframeid');
+	var mainTitle = document.getElementById('mainTitle');
+	
+	var menu = FDLib.getEl('menu');
+	
+	var options = {
+		superDom:menu
+		,tagName:'A'
+		,eventName:'click'
+		,handler:function(target) {
+			iframe.src = target.href;
+			mainTitle.innerHTML = target.innerHTML;
+		}
+	}
+	
+	FDLib.event.addBatchEvent(options);
+}
+</script>
+</head>
+
+<body>
+  <div class="page-container-2">
+
+  	<!-- HEADER -->
+		<!-- Flag navigations -->
+    <div class="navflag-container">
+      <div class="navflag">
+		<ul>
+          <li>你好admin,欢迎登陆</li>
+        </ul>
+		  </div>
+    </div>			
+    <!-- Navigation Level 1 -->
+    <div class="nav1-container">
+      <div class="nav1">
+		<ul>
+         	<li><a href="#">退出</a></li>
+        </ul>
+		  </div>
+    </div>			
+
+    <!-- Sitename -->
+	<div class="site-name">
+      <p class="title"><a href="index.html">Welcome to FDUI</a></p>
+      <p class="subtitle"><a href="index.html">FreeDom UI.</a></p>
+    </div>
+       	 						
+    <!-- Header banner -->		 						    		 						
+	<div>
+		<img class="img-header" src="./img/header2.jpg" alt=""/>
+	</div>
+    
+    <!-- Navigation Level 2 -->												
+    <div class="nav2">			
+		<ul>
+	        <li><a href="index.html" class="selected">Demo</a></li>
+	        <li><a href="doc.html">Doc</a></li>
+	        <li><a href="about.html">About</a></li>
+		</ul>
+	</div>
+    
+    <!-- Buffer after header -->    
+		<div class="buffer"></div>
+
+		<!-- NAVIGATION -->				
+  	<!-- Navigation Level 3 -->
+	<div class="nav3">
+      <ul id="menu">
+        <li class="title">菜单</li>
+        <li class="group"><a href="#">FDGrid</a></li>
+	        <li><a href="../test/grid/gridTest.html">Base FDGrid</a></li>
+	        <li><a href="../test/grid/gridSelectTest.html">Select FDGrid</a></li>
+        <li class="group"><a href="#">FDForm</a></li>
+        	<li><a href="../test/form/FDTextBoxTest.html">FDTextBox</a></li>
+        	<li><a href="../test/form/FDTextAreaTest.html">FDTextArea</a></li>
+        	<li><a href="../test/form/FDRadioTest.html">FDRadio</a></li>
+        	<li><a href="../test/form/FDCheckBoxTest.html">FDCheckBox</a></li>
+        	<li><a href="../test/form/FDSelectBoxTest.html">FDSelectBox</a></li>
+        	<li><a href="../test/form/FDDatePickTest.html">FDDatePick</a></li>
+        	<li><a href="../test/form/FDButtonTest.html">FDButton</a></li>
+        <li class="group"><a href="../test/tab/FDTabTest.html">FDTab</a></li>
+        <li class="group"><a href="../test/panel/FDPanelTest.html">FDPanel</a></li>
+        <li class="group"><a href="../test/window/FDWindowTest.html">FDWindow</a></li>
+        <li class="group"><a href="../test/validate/FDValidate.html">FDValidate</a></li>
+        <li class="group"><a href="../test/tip/FDTipTest.html">FDTip</a></li>
+        <li class="group"><a href="../test/lib/libTest.html">FDLib</a></li>
+        	<li><a href="../test/lib/event.html">event</a></li>
+        	<li><a href="../test/lib/cloneTest.html">clone</a></li>
+        <li class="group"><a href="../test/aboveAll/aboveAllDemo.html">综合</a></li>
+      </ul>
+    </div>				
+
+  	<!-- 	CONTENT -->
+	<div class="content2">
+		<div class="content1-pagetitle" id="mainTitle">Welcome to FDUI</div>
+		<iframe  id="iframeid" src="welcome.html" style="width:100%;height:499px;" frameborder="0"></iframe>
+    </div>
+    <!-- FOOTER -->
+    <div class="footer">
+       <p><b>Copyright &copy; 2012 FDUI</b></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDTab test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px;background-color: #FFF;}
+</style>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.date.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<!-- FDGrid -->
+<script type="text/javascript" src="../../src/FDGrid/interface/Model.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/interface/View.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/model/FDModel.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDTableDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDHeadDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDPaginationDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDCellView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDButtonView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDRowSelectView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDHeadView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDSelectHeadView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDTableView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/GlobalParams.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/control/FDGrid.js"></script>
+<!-- form -->
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDItem.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDItemComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDCalendar/FDCalendar.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDTextBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDPasswordBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDDatePick.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDSelectBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDRadio.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDCheckBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDTextArea.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDButton.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFormPanel.js"></script>
+<!-- validate -->
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+<!-- panel -->
+<script type="text/javascript" src="../../src/FDPanel/view/FDPanelView.js"></script>
+<script type="text/javascript" src="../../src/FDPanel/FDPanel.js"></script>
+<!-- window -->
+<script type="text/javascript" src="../../src/FDWindow/FDDragUtil.js"></script>
+<script type="text/javascript" src="../../src/FDWindow/view/FDWindowView.js"></script>
+<script type="text/javascript" src="../../src/FDWindow/FDWindow.js"></script>
+<!-- tab -->
+<script type="text/javascript" src="../../src/FDTab/view/FDTabView.js"></script>
+<script type="text/javascript" src="../../src/FDTab/FDTab.js"></script>
+<!-- tip -->
+<script type="text/javascript" src="../../src/FDTip/FDTip.js"></script>
+<script type="text/javascript" src="../../src/FDTip/FDTipUtil.js"></script>
+
+
+
+<script type="text/javascript">
+var tab1;
+var tab2;
+window.onload = function() {
+	tab1 = new FDTab({domId:'tab1'
+		,isMouseover:true
+		,items:[
+		{text:'英文',value:1,contentId:'tab1-cont1',closeable:true,checked:false}
+		,{text:'中文',value:2,contentId:'tab1-cont2',checked:true}
+	]});
+	
+	
+	var en = 'After viewing the metamorphosis at sunrise, '
+		+ 'I would walk downhill along the steep mountain-path, '
+		+ 'towards the rocky beach, for a brief swim. Each time, '
+		+ 'I noticed a flurry of activity in a distant compound with a single decrepit building.';
+	
+	var zh = '在观看了日出时奇妙的变化以后，我会沿着陡峭的山路下行，走到一个遍布岩石的海滩，游一会儿泳。'
+	tab2 = new FDTab({domId:'tab2'
+		,items:[
+		{text:'英文2',value:3,content:'<i>'+en+'</i>',closeable:true,checked:false,onchange:changeHandler}
+		,{text:'中文2',value:4,content:'<b>'+zh+'</b>',closeable:true,checked:true,onchange:changeHandler}
+		,{text:"百度",closeable:true,url:'http://www.baidu.com',isRefresh:true,onclick:function(){alert('show baidu')},checked:false}
+	]});
+}
+
+function changeHandler(tab,item) {
+	FDLib.getEl('tip').innerHTML = item.content;	
+}
+function setItems() {
+	var items = [
+	{text:'英文改变后',value:5,content:'<i>英文改变后</i>',closeable:true,checked:true,onchange:changeHandler}
+	,{text:'中文改变后',value:6,content:'<b>中文改变后</b>',onchange:changeHandler}        
+	             ];
+	tab1.setItems(items);
+}
+function addItems() {
+	var items = [
+	{text:'英文add后',content:'<i>英文add后</i>',closeable:true,onchange:changeHandler}
+	,{text:'中文add后',content:'<b>中文add后</b>',onchange:changeHandler}        
+	             ];
+	tab1.addItems(items);
+	tab2.addItems(items);
+}
+function show() {
+	tab1.show();
+}
+function hide() {
+	tab1.hide();
+}
+function removeItem() {
+	tab1.removeItemByValue(1);
+}
+function removeItemByIndex() {
+	tab1.removeItemByIndex(0);
+}
+function selectItemByValue() {
+	tab2.selectItemByValue(4);
+}
+function selectItemByIndex() {
+	tab2.selectItemByIndex(0);
+}
+function disableByIndex() {
+	tab2.disableByIndex(0);
+}
+function enableByIndex() {
+	tab2.enableByIndex(0);
+}
+</script>
+</head>
+<body>
+<button onclick="setItems()">setItems</button>
+<button onclick="addItems()">addItems</button>
+<button onclick="removeItem()">removeItem(value=1)</button>
+<button onclick="removeItemByIndex()">removeItemByIndex(index=0)</button>
+<button onclick="show()">show</button>
+<button onclick="hide()">hide</button>
+<button onclick="selectItemByValue()">selectItemByValue(value=4)</button>
+<button onclick="selectItemByIndex()">selectItemByIndex(index=0)</button>
+<br>
+<button onclick="disableByIndex()">disableByIndex(index=0)</button>
+<button onclick="enableByIndex()">enableByIndex(index=0)</button>
+
+<br>
+<br>
+<div style="border: 1px solid #ccc;">
+	onchangeTip:<div id="tip" style="padding: 5px;height: 30px;"></div>
+</div>
+
+<div id="tab1"></div>
+<div id="tab2"></div>
+
+
+<div id="tab1-cont1" style="display: none;">
+I was a young bachelor then, and Visakhapatnam did not have much to offer. Every Sunday morning, I used to rise before dawn and head for Dolphin’s Nose, to enjoy the dazzling spectacle of the sun majestically rising out of the sea. The fresh, salty sea breeze was a panacea for all the effects of hangovers caused by Saturday night excesses.
+</div>
+<div id="tab1-cont2" style="display: none;">
+那时，我还是一个年轻的单身汉，维萨卡帕特南市对我来说并没有太多好玩的东西。每个周日早晨，我习惯天不亮就起床，前往海豚鼻，享受太阳从海面上庄严升起的壮丽景观。清新又有一丝咸味的海风不啻是一种万能药，能够缓解周六晚上因尽情玩乐而引发的宿醉后的不适感。
+</div>
+</body>
+</html>

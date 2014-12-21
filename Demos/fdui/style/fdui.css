@@ -1,0 +1,303 @@
+/* ------------------- Text alignment  ------------------- */
+.ta-left {
+	text-align: left !important;
+}
+.ta-center {
+	text-align: center !important;
+}
+.ta-right {
+	text-align: right !important;
+}
+.ta-justify {
+	text-align: justify !important;
+}
+
+
+
+/* ------------------- FDGrid ------------------- */
+.fdtable {
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+	line-height:1.5;
+	background-color: #FFF;
+	font-size: 12px;
+	border: #ccc 1px solid;
+}
+
+.fdtable a {
+	color: #329ECC;
+	margin:0 5px;
+	text-decoration: none;
+}
+.fdtable a {color:#329ECC;}
+.fdtable a:visited {color:#329ECC;text-decoration:none;}
+.fdtable a:hover {color:#329ECC;border-bottom: 1px solid #A1CFD4;}
+.fdtable a:active {color:#329ECC;}
+
+
+.fdtable-stylized {
+	border-collapse: collapse;
+	position: relative;
+}
+
+.fdtable-full {
+	width: 100%;
+}
+
+/* 表格主题1 
+.fdtable thead {
+	background-color: #ededed !important;
+	color: #000;
+}
+.fdtable tbody tr.alt-row {
+	background: #FAFAFA;
+}
+*/
+
+/* 表格主题2 */
+.fdtable thead {
+	font-weight: bold;
+	background-color: #9cbad6 !important;
+	color: #000;
+}
+.fdtable .selectbox {
+	width: 1px;
+}
+.fdtable .noselectbox {
+	width: 20px;
+}
+.fdtable tbody tr.alt-row {
+	background: #e4eff3;
+}
+
+.fdtable-stylized thead td {
+	padding: 2px 0px 2px 5px;
+}
+.fdtable-stylized thead a {color: #000;}
+.fdtable-stylized thead a:visited {color:#000;text-decoration:none;}
+.fdtable-stylized thead a:hover {color:#329ECC;border-bottom: 0px solid #A1CFD4;}
+.fdtable-stylized thead a:active {color:#000;}
+
+.fdtable-stylized tbody td {
+	padding: 1px 0px 1px 5px;
+/* 	border-bottom: 1px solid #ededed; */
+}
+
+.fdtable tbody .row-selected td{
+	background-color: #eded1e;
+}
+
+/* 分页 */
+.fdtable-pagination {
+	border-top: 1px dotted gray;
+	margin-top: 1px;
+}
+.fdtable-pagination table{
+	border-collapse: collapse;
+}
+.fdtable-pagination td {
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.fdtable-pagination a {
+	padding: 0px 3px 0px 3px;
+}
+.fdtable-button {
+	margin:0 5px;
+	text-align: center;
+}
+
+/* ------------------- FDForm ------------------- */
+.fdform {
+	border-collapse: collapse;font-size: 12px;
+}
+	.fdform input[type="text"]
+	,.fdform input[type="password"]
+	,.fdform textarea
+	,.fdform select
+	{
+		border:1px solid #C0C4C7;
+		font-size: 12px;
+	}
+	
+	.fdform input[type="text"]:focus 
+	,.fdform input[type="password"]:focus 
+	,.fdform textarea:focus {
+		border:1px solid #609ec5;
+	}
+	
+	.fdform input:focus 
+	,.fdform textarea:focus 
+	,.fdform select:focus {
+		outline-width:0; /* No outline border for Safary */
+	}
+	
+	.fdform input[type="submit"] 
+	,.fdform input[type="reset"] 
+	,.fdform input[type="button"] {
+		margin-bottom:0;
+	}
+.fdform .msg{
+	padding:0px 0px 0px 5px;
+}
+.fdform .lab{color:#666666;}
+
+/* ------------------- FDRadio FDCheckBox ------------------- */
+.fditem {}
+	.fditem label 
+	,.fditem input {
+		vertical-align:middle;
+	}
+.fditem .horizontal {
+	display: inline-block;
+}
+
+.fditem .vertical {
+	display:block;
+}
+/* ------------------- FDPanel ------------------- */
+.fdpanel{font-size: 12px;}
+
+	.fd-content-box {
+		background: #fff;
+		display: inline-block;
+		border: 1px solid #dddddd;
+	}
+	.fd-content-box .section {
+		margin: 8px;
+	}
+	.fdpanel-header {
+		background:#9cbad6;
+	}
+	.fdpanel-header h3 {
+		margin:0;
+		padding:6px 8px;
+		font-size: 14px;
+		color: #fff;
+	}
+	.fdpanel-header .close {
+		font-size: 12px;
+		float: right;
+		font-weight: normal;
+	}
+	.fd-content-box .close a {color:#fff ;margin:0 5px;text-decoration: none;}
+	.fd-content-box .close a:visited {color:#fff;text-decoration:none;}
+	.fd-content-box .close a:hover {color:#e4eff3;}
+	.fd-content-box .close a:active {color:#fff;}
+/* ------------------- FDWindow ------------------- */
+.fdwindow{position: absolute;font-size: 12px;}
+
+	.fdwindow .shadow {
+		-moz-box-shadow:4px 4px 2px rgba(196,196,196,0.5);
+		-webkit-box-shadow:4px 4px 2px rgba(196,196,196,0.5);
+		box-shadow: 4px 4px 2px rgba(196,196,196,0.5);
+		/* gte ie8 */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#c4c4c4,direction=135,strength=6)";
+		/* lte ie7 */
+		*filter: progid:DXImageTransform.Microsoft.Shadow(color=#c4c4c4,direction=135,strength=6);
+	}
+	.fdwindow-button{border-top: 1px dotted #ddd !important;}
+	.fdwindow-button table{width:100%;border-collapse: collapse;}
+	.fdwindow-button table td{padding: 4px 2px;}
+/* ------------------- FDTip ------------------- */
+.fdtip {
+	position:absolute;
+	border:1px solid #beb49c;
+	/* 背景阴影 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color=#c4c4c4);
+	-moz-box-shadow:2px 2px rgba(196,196,196,0.5);
+	-webkit-box-shadow:2px 2px rgba(196,196,196,0.5);
+	box-shadow:2px 2px rgba(196,196,196,0.5);
+	padding:2px;
+	font-size:12px;
+	background:#fefadf;
+	white-space:nowrap;
+}
+
+/* ------------------- FDTab ------------------- */
+.fdtab {padding-left:12px; border-bottom:1px solid #9cbad6; zoom:1; padding-top:5px;font-size: 12px;}
+.fdtab:after{content:".";height:0;visibility:hidden;display:block;clear:both;}
+	.fdtab li {float:left; padding:0 10px; margin-top:1px;margin-right:3px; position:relative; overflow:hidden; line-height:25px; top:1px; z-index:2; background-color:#FFF;border: 1px solid #9CBAD6;}
+	.fdtab li.selected { font-weight:bold; border-bottom-color:#9CBAD6; background-color:#9CBAD6;}
+	.fdtab li.selected a {color:#fff;}
+	.fdtab li.selected a:visited {color:#fff;}
+	.fdtab li.selected a:active {color:#fff;}
+	.fdtab li.selected a:hover {color:#fff;text-decoration: none;}
+	
+	.fdtab li a {color:#5890a8;margin:0 5px;text-decoration: none;}
+	.fdtab li a:visited {color:#5890a8;text-decoration:none;}
+	.fdtab li a:hover {color:#5890a8;text-decoration: underline;}
+	.fdtab li a:active {color:#5890a8;}
+	
+	.fdtab li.disabled {background-color: #f4f4f4;color:#b1b1b1;border-top:1px solid #f4f4f4;border-left:1px solid #f4f4f4;border-right:1px solid #f4f4f4;}
+	.fdtab li.disabled a {text-decoration: none;cursor: default;color:#6d6d6d;}
+	.fdtab .disabled .close {cursor: default;color:#f4f4f4;}
+	
+	.fdtab .close {
+		display: block;
+		position: absolute;
+		height:10px;
+		top: -10px;
+		right: -1px;
+		padding:2px;
+		cursor: pointer;
+		z-index: 2;
+		color:#9cbad6;
+		font-weight:bold;
+		font-family:arial,sans-serif,tahoma,\5b8b\4f53;
+	}
+	.fdtab li.selected .close {color:#fff;}
+		
+/* ------------------- FDCalendar ------------------- */
+.fd-calendar{position: absolute;background-color:#fff;border: 1px solid #9cbad6;width: 170px;padding: 0px;z-index: 999;
+font-family: arial, helvetica,tahoma,sans-serif;font-size: 12px;}
+	.fd-calendar .today {border:1px red dotted;}
+	.fd-calendar .selected {background-color: #e4eff3;}
+	.fd-calendar .unselected {background-color: #fff;}
+	.fd-calendar table{border-collapse: collapse;}
+	.fd-calendar thead{background-color: #7fa2ca;padding: 2px;text-align: center;}
+	.ym-txt {text-align: center;color: #fff;vertical-align: middle;}
+	.day_change {color: #233d6d;padding:2px 0px;}
+	.fdcalendar-week {background-color: #dbe6f1;padding:2px 0px;}
+	
+	.fd-calendar tbody td{cursor: default;text-align: center;width: 22px;}
+	.fd-calendar tfoot {background-color: #7fa2ca;}
+	.fd-calendar tfoot a{margin: 2px 4px;}
+	.fd-calendar a {color: #fff;text-decoration: none;}
+	.fd-calendar a:visited {color:#fff;text-decoration:none;}
+	.fd-calendar a:hover {color:#fff;}
+	.fd-calendar a:active {color:#fff;}
+	.calendar-hover{background-color: #e4eff3;}
+	
+/* ------------------- FDDatePick ------------------- */
+.fddatepick {}
+	.fddatepick .default{color: #777;}
+	.fddatepick input{cursor: pointer;font-size: 12px;}
+	.fddatepick-disable input{cursor: default;}
+
+/* ------------------- FDButton ------------------- */
+.fdbutton input{
+	font-size: 12px;
+	padding:2px 10px;  
+	vertical-align: middle;
+}
+	.fdbutton-enable input{
+		background: #7fa2ca;
+		color: white;
+		cursor:pointer;
+		border:1px solid #7fa2ca;
+	}
+	.fdbutton-disable input{
+		background: #f4f4f4;
+		color: #6d6d6d;
+		cursor:default;
+		border:1px solid #f4f4f4;
+	}
+	.fdbutton-hover input{
+		background: #9cbad6;
+		color: white;
+		cursor:pointer;
+		border:1px solid #9cbad6;
+	}
+	
+	

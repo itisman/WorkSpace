@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Grid Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+<!-- FDGrid -->
+<script type="text/javascript" src="../../src/FDGrid/interface/Model.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/interface/View.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/model/FDModel.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDTableDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDHeadDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDPaginationDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDCellView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDButtonView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDRowSelectView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDHeadView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDSelectHeadView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDTableView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/GlobalParams.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/control/FDGrid.js"></script>
+
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDItem.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDItemComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+
+
+<script type="text/javascript" src="../../src/FDForm/FDSelectBox.js"></script>
+
+<script type="text/javascript">
+var grid;
+var gridData = {total:12,pageIndex:1,pageSize:10,gridMsg:'你好'
+	,rows:[
+	       {"username":'Jim',"addr":"浙江","birthday":"2012-7-26",age:10}
+	       ,{"username":'Tom3',"addr":"浙江","birthday":"2012-7-26",age:20}
+	       ,{"username":'Tom4',"addr":"浙江","birthday":"2012-7-26",age:30}
+	       ,{"username":'Tom5',"addr":"浙江","birthday":"2012-7-26",age:40}
+	       ,{"username":'Tom6',"addr":"浙江","birthday":"2012-7-26",age:50}
+	       ,{"username":'Tom7',"addr":"浙江","birthday":"2012-7-26",age:60}
+	       ,{"username":'Tom7',"addr":"浙江","birthday":"2012-7-26",age:70}
+	       ,{"username":'Tom4',"addr":"浙江","birthday":"2012-7-26",age:30}
+	       ,{"username":'Tom5',"addr":"浙江","birthday":"2012-7-26",age:40}
+	       ,{"username":'Tom6',"addr":"浙江","birthday":"2012-7-26",age:50}
+	       ,{"username":'Tom7',"addr":"浙江","birthday":"2012-7-26",age:60}
+	       ,{"username":'Tom7',"addr":"浙江","birthday":"2012-7-26",age:70}
+	     ]};
+	     
+window.onload = function(){
+	
+	
+	grid = new FDGrid({
+		domId:'grid'
+		//,url:'data.json'
+		//,width:'200px'
+		,height:'200px'
+		,data:gridData
+		,rowRender:function(rowData,tr,rowIndex){
+			// 如果是第三行,则改变背景颜色
+			// 年龄加10
+			if(rowIndex + 1 == 3) {
+				tr.style.backgroundColor = "#CCC";
+				rowData.age = rowData.age + 10;
+			}
+		}
+		,columns:[
+			{text:"姓名",name:"username"}
+			,{text:"联系地址",name:"addr",style:{'color':'blue'}}
+			,{text:"出生日期",name:"birthday"}
+			,{text:"年龄(靠右对齐)",name:"age",width:50,render:function(rowData,td,rowIndex){
+				// 如果年龄>= 60,则背景色变红
+				if(rowData.age >= 60) {
+					td.style.backgroundColor = "red";
+				}
+				if(rowData.age <= 20) {
+					td.style.color = "green";
+				}
+				td.align = 'right';
+				return rowData.age;
+			}}
+		]
+		,actionButtons:[
+			{text:'修改',onclick:update}
+			,{text:'删除',onclick:del,showFun:function(rowData,rowIndex){
+				// 如果是3的倍数就显示删除按钮
+				return ((rowIndex+1) % 3 === 0)
+			}}
+		]
+	});
+	
+	grid.search();
+}
+
+function update(rowData,rowIndex) {
+	alert(rowIndex + " update: " + rowData.username);
+}
+function del(rowData,rowIndex) {
+	alert(rowIndex + " del: " + rowData.username);
+}
+function refresh() {
+	grid.refresh();
+}
+</script>
+</head>
+<body>
+<div id="grid"></div>
+<button onclick="refresh()">grid.refresh()</button>
+</body>
+</html>

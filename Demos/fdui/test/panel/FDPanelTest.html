@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDPanel Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDItem.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDItemComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+
+<!-- form -->
+<script type="text/javascript" src="../../src/FDForm/FDTextBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDPasswordBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDSelectBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDRadio.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDCheckBox.js"></script>
+<!-- panel -->
+<script type="text/javascript" src="../../src/FDPanel/view/FDPanelView.js"></script>
+<script type="text/javascript" src="../../src/FDPanel/FDPanel.js"></script>
+
+<script type="text/javascript">
+var tip;
+var win;
+var win3;
+window.onload = function() {
+	tip = FDLib.getEl('tip');
+	win = new FDPanel({
+		domId:'win'
+		,title:'标题'
+		,isSlide:true
+		,width:'500px'
+		,height:'300px'
+	});
+	new FDPanel({
+		domId:'win2'
+		,title:'标题'
+		,isSlide:true
+		,isExpand:false
+		,width:'500px'
+		,height:'300px'
+	});
+	win3 = new FDPanel({
+		domId:'win3'
+		,title:'标题3'
+	});
+	
+	
+	new FDTextBox({domId:'username',name:"username",label:'用户名:'});
+	new FDPasswordBox({domId:'password',name:'password',label:'密码:'});
+	new FDPasswordBox({domId:'rePassword',name:'rePassword',label:'确认密码:'});
+	new FDTextBox({domId:'email',name:"email",label:'邮箱:'});
+	new FDTextBox({domId:'address',width:'250px',name:"address",label:'地址:'});
+	new FDRadio({domId:'gender',name:"gender",label:'性别:',items:[{value:1,text:"男",checked:true},{value:0,text:"女"}]})
+	new FDSelectBox({domId:'country',name:"country",label:'选择国家:',items:[{value:1,text:'中国'},{value:2,text:'法国'},{value:3,text:'美国'}]})
+}
+function show() {
+	win.show(function(){
+		tip.innerHTML +=(' show callback<br>')
+	});
+}
+function showOther() {
+	win3.show();
+}
+function closeWin() {
+	win.close();
+}
+function setTitle() {
+	win.setTitle("标题222");
+}
+var content = 'hello<br>world';
+function appendContent() {
+	content +='<br> hello world.....';
+	win.setContent(content)
+}
+
+</script>
+</head>
+<body>
+
+<button onclick="show()">show</button>
+<button onclick="closeWin()">close</button>
+<button onclick="setTitle()">setTitle</button>
+<button onclick="appendContent()">appendContent</button>
+
+
+<div id="tip"></div>
+<div id="win">
+记忆里那片永不凋落的树叶，葬在了那个璀璨的夏天。或许真的就是这样，一切的一切，都只是曾经的一段明媚的时光，是宿命的使然，无法逃脱，且不能改变。
+
+那只属于青春的丰沛相思，那只属于过往的似水年华，经不起流光的辗转，指尖轻轻一戳，就会破碎。这是我们卑微的宿命。
+
+明媚的天空下，望着云朵在空中飘摆，我总是告诉自己，不要再缅怀那些过去，然而抬起头，看看天空，那炽热的日光还是会将我满含眷念的眼眸硌疼，那云瑶里的微澜我的指尖也还是无法触摸，我，也还是我，那个忧郁得透蓝的少年。
+</div>
+<div id="win2">
+还记得吗？我记得，你也许忘了。 当繁华的叶子落尽，生命的脉络才清晰可见。当走过迷失的曾经，才觉得过往那么的真切。最美的风景，不是你能看到的，而是你能想到的，想到的那些在记忆中回味着...
+</div>
+
+
+<div id="win3" style="width: 400px;">
+	<div>
+		<table>
+			<tr><td id="username"></td></tr>
+			<tr><td id="password"></td></tr>
+			<tr><td id="rePassword"></td></tr>
+			<tr><td id="email"></td></tr>
+			<tr><td id="gender"></td></tr>
+			<tr><td id="address"></td></tr>
+			<tr><td id="country"></td></tr>
+		</table>
+	</div>
+</div>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+foot
+</pre>
+</body>
+</html>

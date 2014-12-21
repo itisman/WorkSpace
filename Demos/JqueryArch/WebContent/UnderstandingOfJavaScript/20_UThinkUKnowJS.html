@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>You think you know JavaScript?</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+	//No.1
+	if(!("a1" in window)){
+		var a1 = 1;
+	}
+	console.log(a1); //undefined
+
+	//No.2
+	var a2 = 1;
+	b2 = function a2(x2){
+		x2 && a2(--x2);
+	}
+	console.log(a2); //1
+
+	//No.3
+	function a3(x3){
+		return x * 2;
+	}
+	var a3;
+	console.log(a3); //function(){...}
+
+	//No.4
+	function b4(x, y, a){
+		arguments[2] = 10;
+		console.log(a);
+	}
+	b4(1,2,3); //10
+
+	//No.5
+	function a5(){
+		console.log(this);
+	}
+	a5.call(null);
+
+
+
+</script>
+

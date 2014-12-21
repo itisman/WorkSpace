@@ -1,0 +1,885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - FDLib.dom</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/FDBaseValidate.html">FDBaseValidate</a></li>
+	
+	<li><a href="../symbols/FDButton.html">FDButton</a></li>
+	
+	<li><a href="../symbols/FDCheckBox.html">FDCheckBox</a></li>
+	
+	<li><a href="../symbols/FDComponent.html">FDComponent</a></li>
+	
+	<li><a href="../symbols/FDControl.html">FDControl</a></li>
+	
+	<li><a href="../symbols/FDDatePick.html">FDDatePick</a></li>
+	
+	<li><a href="../symbols/FDDragUtil.html">FDDragUtil</a></li>
+	
+	<li><a href="../symbols/FDFieldComponent.html">FDFieldComponent</a></li>
+	
+	<li><a href="../symbols/FDHidden.html">FDHidden</a></li>
+	
+	<li><a href="../symbols/FDItemComponent.html">FDItemComponent</a></li>
+	
+	<li><a href="../symbols/FDLib.html">FDLib</a></li>
+	
+	<li><a href="../symbols/FDLib.ajax.html">FDLib.ajax</a></li>
+	
+	<li><a href="../symbols/FDLib.browser.html">FDLib.browser</a></li>
+	
+	<li><a href="../symbols/FDLib.date.html">FDLib.date</a></li>
+	
+	<li><a href="../symbols/FDLib.dom.html">FDLib.dom</a></li>
+	
+	<li><a href="../symbols/FDLib.event.html">FDLib.event</a></li>
+	
+	<li><a href="../symbols/FDLib.string.html">FDLib.string</a></li>
+	
+	<li><a href="../symbols/FDLib.util.html">FDLib.util</a></li>
+	
+	<li><a href="../symbols/FDPanel.html">FDPanel</a></li>
+	
+	<li><a href="../symbols/FDPasswordBox.html">FDPasswordBox</a></li>
+	
+	<li><a href="../symbols/FDRadio.html">FDRadio</a></li>
+	
+	<li><a href="../symbols/FDSelectBox.html">FDSelectBox</a></li>
+	
+	<li><a href="../symbols/FDTab.html">FDTab</a></li>
+	
+	<li><a href="../symbols/FDTextArea.html">FDTextArea</a></li>
+	
+	<li><a href="../symbols/FDTextBox.html">FDTextBox</a></li>
+	
+	<li><a href="../symbols/FDTip.html">FDTip</a></li>
+	
+	<li><a href="../symbols/FDTipUtil.html">FDTipUtil</a></li>
+	
+	<li><a href="../symbols/FDValidate.html">FDValidate</a></li>
+	
+	<li><a href="../symbols/FDWindow.html">FDWindow</a></li>
+	
+	<li><a href="../symbols/GlobalParams.html">GlobalParams</a></li>
+	
+	<li><a href="../symbols/JString.html">JString</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class FDLib.dom
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>源文件: </i> <a href="../symbols/src/js_src_FDLib_FDLib.dom.js.html">FDLib.dom.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class FDLib.dom.">
+				<caption>Class 摘要</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/FDLib.dom.html#constructor">FDLib.dom</a></b>()
+							</div>
+							<div class="description">HTML节点工具类</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class FDLib.dom.">
+					<caption>方法摘要</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.addClass">addClass</a></b>(dom, classNames)
+								</div>
+								<div class="description">添加元素的class属性</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.bindDomStyle">bindDomStyle</a></b>(dom, styleJson)
+								</div>
+								<div class="description">给DOM对象绑定style</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.getOffset">getOffset</a></b>(dom)
+								</div>
+								<div class="description">等同于jquery.offset()</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.getOffsetX">getOffsetX</a></b>(element)
+								</div>
+								<div class="description">获取元素距离页面左边的值,相当于jquery中的offset().left</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.getOffsetY">getOffsetY</a></b>(element)
+								</div>
+								<div class="description">获取元素距离页面顶部的值,相当于jquery中的offset().top</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.hasClass">hasClass</a></b>(dom, className)
+								</div>
+								<div class="description">判断DOM是否含有className</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.hideDom">hideDom</a></b>(dom)
+								</div>
+								<div class="description">隐藏节点</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.removeClass">removeClass</a></b>(dom, className)
+								</div>
+								<div class="description">移除元素的class属性</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.showDom">showDom</a></b>(dom)
+								</div>
+								<div class="description">显示节点</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">FDLib.dom.<b><a href="../symbols/FDLib.dom.html#.wrap">wrap</a></b>(target, html)
+								</div>
+								<div class="description">包裹节点,相当于jquery的warp</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class 详细信息
+				</div>
+				
+				<div class="fixedFont">
+						<b>FDLib.dom</b>()
+				</div>
+				
+				<div class="description">
+					HTML节点工具类
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					方法详细信息
+				</div>
+				
+					<a name=".addClass"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>addClass</b>(dom, classNames)
+					
+					</div>
+					<div class="description">
+						添加元素的class属性
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd>DOM对象,如input,div等</dd>
+							
+								<dt>
+									<b>classNames</b>
+									
+								</dt>
+								<dd>class名,字符串格式,多个用空格隔开.如:"enable","enable selected"</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".bindDomStyle"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>bindDomStyle</b>(dom, styleJson)
+					
+					</div>
+					<div class="description">
+						给DOM对象绑定style
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd>DOM对象</dd>
+							
+								<dt>
+									<b>styleJson</b>
+									
+								</dt>
+								<dd>存放样式,如:{'backgroundColor':'red','border':'1px'};采用驼峰式写法</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getOffset"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>getOffset</b>(dom)
+					
+					</div>
+					<div class="description">
+						等同于jquery.offset()
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>返回 {letf:int,top:int}</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getOffsetX"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>getOffsetX</b>(element)
+					
+					</div>
+					<div class="description">
+						获取元素距离页面左边的值,相当于jquery中的offset().left
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>element</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>返回int类型的值</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getOffsetY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>getOffsetY</b>(element)
+					
+					</div>
+					<div class="description">
+						获取元素距离页面顶部的值,相当于jquery中的offset().top
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>element</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>返回int类型的值</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".hasClass"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>hasClass</b>(dom, className)
+					
+					</div>
+					<div class="description">
+						判断DOM是否含有className
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd>DOM 对象</dd>
+							
+								<dt>
+									<b>className</b>
+									
+								</dt>
+								<dd>字符串格式</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".hideDom"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>hideDom</b>(dom)
+					
+					</div>
+					<div class="description">
+						隐藏节点
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd>DOM对象</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".removeClass"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>removeClass</b>(dom, className)
+					
+					</div>
+					<div class="description">
+						移除元素的class属性
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd>DOM对象,如input,div等</dd>
+							
+								<dt>
+									<b>className</b>
+									
+								</dt>
+								<dd>class名,字符串格式,多个用空格隔开.如:"enable","enable selected"</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".showDom"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>showDom</b>(dom)
+					
+					</div>
+					<div class="description">
+						显示节点
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>dom</b>
+									
+								</dt>
+								<dd>DOM对象</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".wrap"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">FDLib.dom.</span><b>wrap</b>(target, html)
+					
+					</div>
+					<div class="description">
+						包裹节点,相当于jquery的warp
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>target</b>
+									
+								</dt>
+								<dd>dom对象</dd>
+							
+								<dt>
+									<b>html</b>
+									
+								</dt>
+								<dd>可以是dom对象也可以是string</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			文档使用<a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0工具生成  Fri Nov 23 2012 11:04:53 GMT+0800 (CST)
+		</div>
+	</body>
+</html>

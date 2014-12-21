@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDRadio Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+
+
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDItem.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDItemComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+
+
+<script type="text/javascript" src="../../src/FDForm/FDRadio.js"></script>
+
+<script type="text/javascript">
+
+var radio1;
+var radio2;
+
+var genderItems = [{value:1,text:"男"},{value:0,text:"女"}];
+var constellationItems = [{value:0,text:"金牛座",date:'03-01'},{value:1,text:"天枰座",date:'04-01'}
+,{value:2,text:"巨蟹座",date:'05-01'},{value:3,text:"双子座",date:'06-01'}];
+
+var newItems = [
+{value:10,text:'北京'},{value:11,text:'上海'},{value:12,text:'天津'}
+,{value:13,text:'重庆'}
+                ];
+                
+window.onload = function() {
+	radio1 = new FDRadio({name:"gender",items:genderItems
+		,validates:[ new FDValidate({notNull:true}) ]
+	});
+	radio1.renderTo('gender');
+	
+	radio2 = new FDRadio({domId:'constellation',name:'constellation'
+		,defaultValue:1
+		,items:constellationItems,label:'星坐:'});
+}
+
+function getSelectItem() {
+	var data = radio2.getSelectItem();
+	var s = '';
+	console.log(data)
+	for(var key in data) {
+		s += key + ":" + data[key]
+	}
+	
+	alert(s);
+}
+function getValue() {
+	var val = radio1.getValue()
+	alert(val)
+}
+function setValue() {
+	radio1.setValue(1);
+	radio2.setValue(3);
+}
+function setItems() {
+	radio1.setItems(newItems)
+}
+function getData() {
+	var data = radio1.getData()
+	var s = '';
+	for(var key in data) {
+		s += key + ":" + data[key]
+	}
+	
+	alert(s);
+}
+function disable() {
+	radio1.disable();
+}
+function enable() {
+	radio1.enable();
+}
+function show() {
+	radio1.show();
+	radio2.show();
+}
+function hide() {
+	radio1.hide();
+	radio2.hide();
+}
+function reset() {
+	radio1.reset();
+	radio2.reset();
+}
+
+function validate() {
+	var val = radio1.validate();
+	alert(val)
+} 
+</script>
+
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>性别:</td>
+		<td id="gender"></td>
+	</tr>
+	<tr>
+		<td id="constellation" colspan="2"></td>
+	</tr>
+</table>
+<button onclick="getSelectItem()">getSelectItem</button>
+<button onclick="getValue()">getValue</button>
+<button onclick="setValue()">setValue</button>
+<button onclick="setItems()">setItems</button>
+<button onclick="getData()">getData</button>
+<button onclick="disable()">disable</button>
+<button onclick="enable()">enable</button>
+<button onclick="show()">show</button>
+<button onclick="hide()">hide</button>
+<button onclick="reset()">reset</button>
+<br>
+<button onclick="validate()">validate</button>
+
+</body>
+</html>

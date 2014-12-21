@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>综合</title>
+<!-- css -->
+<style type="text/css">
+body{background-color: white;}
+</style>
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.date.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<!-- FDGrid -->
+<script type="text/javascript" src="../../src/FDGrid/interface/Model.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/interface/View.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/model/FDModel.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDTableDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDHeadDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/decorator/FDPaginationDecorator.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDCellView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDButtonView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDRowSelectView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDHeadView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDSelectHeadView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/view/FDTableView.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/GlobalParams.js"></script>
+<script type="text/javascript" src="../../src/FDGrid/control/FDGrid.js"></script>
+<!-- form -->
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDItem.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDItemComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDCalendar/FDCalendar.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDTextBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDHidden.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDPasswordBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDDatePick.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDSelectBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDRadio.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDCheckBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDTextArea.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDButton.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFormPanel.js"></script>
+<!-- validate -->
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+<!-- panel -->
+<script type="text/javascript" src="../../src/FDPanel/view/FDPanelView.js"></script>
+<script type="text/javascript" src="../../src/FDPanel/FDPanel.js"></script>
+<!-- window -->
+<script type="text/javascript" src="../../src/FDWindow/FDDragUtil.js"></script>
+<script type="text/javascript" src="../../src/FDWindow/view/FDWindowView.js"></script>
+<script type="text/javascript" src="../../src/FDWindow/FDWindow.js"></script>
+<!-- tab -->
+<script type="text/javascript" src="../../src/FDTab/view/FDTabView.js"></script>
+<script type="text/javascript" src="../../src/FDTab/FDTab.js"></script>
+<!-- tip -->
+<script type="text/javascript" src="../../src/FDTip/FDTip.js"></script>
+<script type="text/javascript" src="../../src/FDTip/FDTipUtil.js"></script>
+
+<script type="text/javascript" src="aboveAllDemo.js"></script>
+</head>
+<body onload="init()">
+<div id="tabInfo"></div>
+<div id="classInfo">
+
+	<div id="classDetail">
+		<table>
+			<tr><td>班级：</td><td>高三5班</td></tr>
+			<tr><td>人数：</td><td>40</td></tr>
+			<tr><td>班主任：</td><td>刘XX</td></tr>
+			<tr><td>班长：</td><td>赵XX</td></tr>
+			<tr><td>学习委员：</td><td>王XX</td></tr>
+		</table>
+	</div>
+</div>
+
+<div id="studentManage">
+	<table>
+		<tr><td id="schStuNo"></td><td id="schName"></td><td id="schGender"></td>
+			<td>
+				<div id="btnSch" style="display: inline-block;"></div>
+				<div id="btnAdd" style="display: inline-block;"></div>
+			</td>
+		</tr>
+	</table>
+	<br>
+	注:排序,分页功能需要服务器端的支持
+	<div id="grid"></div><br>
+	
+</div>
+<div id="crudWin">
+	<div id="id"></div>
+	<table>
+		<tr><td id="stuNo"></td></tr>
+		<tr><td id="name"></td></tr>
+		<tr><td id="gender"></td></tr>
+		<tr><td id="nationality"></td></tr>
+		<tr><td id="politicsStatus"></td></tr>
+		<tr><td id="birthday"></td></tr>
+		<tr><td id="registDate"></td></tr>
+		<tr><td id="mobile"></td></tr>
+		<tr><td id="address"></td></tr>
+	</table>
+</div>
+</body>
+</html>

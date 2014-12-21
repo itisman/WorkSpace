@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lib Test</title>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+<style type="text/css">
+	.red {background-color: red;}
+	.blue {background-color: blue;}
+	.border1 {border: 3px solid black;}
+	.border2 {border: 4px solid black;}
+</style>
+<script type="text/javascript">
+
+var ViewInterface = FDLib.createInterface(['regist'])
+
+// test extend,基类
+var FDBaseView = function(control) {
+	this.regist(control);
+};
+
+FDBaseView.prototype = {
+	regist:function(control) {
+		document.write('regist:' + control + '<br>')
+	}
+};
+// 子类
+var FDBodyView = function(control) {
+	// 继承父类构造函数
+	FDBodyView.superclass.constructor.call(this,control);
+	FDLib.implement(this,ViewInterface);
+	
+
+}
+// 继承父类
+FDLib.extend(FDBodyView,FDBaseView);
+
+
+new FDBaseView("base control");
+new FDBodyView("body control");
+
+function addClass(className) {
+	var d = FDLib.getEl('d')
+	FDLib.dom.addClass(d,className);
+}
+
+function removeClass(className) {
+	var d = FDLib.getEl('d')
+	FDLib.dom.removeClass(d,className);
+}
+
+document.write('---------- test FDLib.util.each([1,2,3],callback)---------- <br>')
+var arr = [1,2,3];
+FDLib.util.each(arr,function(data,index){
+	document.write('arr['+index+'] + 1 = ' + (data + 1) + '<br>')
+});
+</script>
+</head>
+<body>
+browser info:
+<div id="browser"></div>
+
+<button onclick="addClass('red')">addClass 'red'</button>
+<button onclick="addClass('border1')">addClass 'border1'</button>
+<button onclick="addClass('blue border2')">addClass 'blue border2'</button>
+<button onclick="removeClass('border1')">removeClass 'border1'</button>
+<div id="d" style="height: 100px;width: 100px">aa</div>
+
+
+
+<script type="text/javascript">
+//browser info
+FDLib.getEl('browser').innerHTML = 
+	"isIE : " + FDLib.browser.isIE() + " isWin : " + FDLib.browser.isWin();
+</script>
+</body>
+</html>

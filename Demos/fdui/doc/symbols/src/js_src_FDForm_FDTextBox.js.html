@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * 文本框控件FDTextBox,继承自&lt;a href="FDFieldComponent.html">FDFieldComponent&lt;/a>&lt;br>
+<span class='line'>  3</span>  * @example 示例:&lt;br>
+<span class='line'>  4</span>  * &lt;pre>&lt;code>
+<span class='line'>  5</span> var txtUsername;
+<span class='line'>  6</span> 
+<span class='line'>  7</span> window.onload = function() {
+<span class='line'>  8</span> 	txtUsername = new FDTextBox({name:"username",defaultValue:'请输入姓名'
+<span class='line'>  9</span> 		,validates:[new FDValidate({errorMsg:'请输入正整数',items:['positiveInt']})]});
+<span class='line'> 10</span> 	txtUsername.renderTo('username');
+<span class='line'> 11</span> 	
+<span class='line'> 12</span> 	var text2 = new FDTextBox({domId:'addr',width:200,height:30,name:'addr',label:'地址:',labelValign:'top'});
+<span class='line'> 13</span> 	text2.addEvent('change',function(){
+<span class='line'> 14</span> 		var e = FDLib.event.getEvent();
+<span class='line'> 15</span> 		alert(e.target.value);
+<span class='line'> 16</span> 	})
+<span class='line'> 17</span> }&lt;/code>&lt;/pre>
+<span class='line'> 18</span> * @param options 参见&lt;a href="FDFieldComponent.html#getOptions">FDFieldComponent.getOptions()&lt;/a>&lt;br>
+<span class='line'> 19</span> * @constructor
+<span class='line'> 20</span>  */</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">FDTextBox</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">	</span><span class="NAME">FDTextBox.superclass.constructor.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">	</span><span class="NAME">this.options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">FDLib.util.apply</span><span class="PUNC">(</span><span class="NAME">this.getOptions</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="NAME">FDLib.extend</span><span class="PUNC">(</span><span class="NAME">FDTextBox</span><span class="PUNC">,</span><span class="NAME">FDFieldComponent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/**
+<span class='line'> 29</span>  * @private
+<span class='line'> 30</span>  */</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="COMM">//@override</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="NAME">FDTextBox.prototype.getControlHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">'&lt;input type="text" name="'</span><span class="PUNC">+</span><span class="NAME">this.options.name</span><span class="PUNC">+</span><span class="STRN">'" />'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 35</span> </span></pre></body></html>

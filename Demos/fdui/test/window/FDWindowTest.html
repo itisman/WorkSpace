@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDWindow Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px;background-color: white;}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.date.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+
+<!-- form -->
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDItem.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDItemComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDCalendar/FDCalendar.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDTextBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDPasswordBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDDatePick.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDSelectBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDRadio.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDCheckBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDTextArea.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDButton.js"></script>
+
+<!-- validate -->
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+
+<!-- panel -->
+<script type="text/javascript" src="../../src/FDPanel/view/FDPanelView.js"></script>
+<script type="text/javascript" src="../../src/FDPanel/FDPanel.js"></script>
+<!-- window -->
+<script type="text/javascript" src="../../src/FDWindow/FDDragUtil.js"></script>
+<script type="text/javascript" src="../../src/FDWindow/view/FDWindowView.js"></script>
+<script type="text/javascript" src="../../src/FDWindow/FDWindow.js"></script>
+
+
+<script type="text/javascript">
+var tip;
+var win;
+var win3;
+window.onload = function() {
+	tip = FDLib.getEl('tip');
+	win = new FDWindow({
+		domId:'win'
+		,title:'标题'
+		,modal:false
+		,afterShow:function(){tip.innerHTML = ('afterShow<br>')}
+		,afterClose:function(){tip.innerHTML = ('afterClose<br>')} 
+		,buttons:[
+			new FDButton({text:'确定',onclick:function(){
+				alert('OK');
+				win.close();
+			}})
+			,new FDButton({text:'取消',onclick:function(){
+				win.close();
+			}})
+		]
+	});
+	win3 = new FDWindow({
+		domId:'win3'
+		,title:'标题3'
+		,buttons:[
+			{text:'确定',onclick:function(){
+				alert('OK')
+			}}
+			,{text:'取消',onclick:function(){
+				win3.close();
+			}}
+		 ]
+	});
+	
+	var win2 = new FDWindow({domId:'win2',width:'200px',modal:false,dragable:false,title:'无法拖动,无法关闭的标题',closeable:false});
+	win2.moveTo(100,100);
+	win2.show();
+	
+	
+	new FDTextBox({domId:'username',name:"username",label:'用户名:'});
+	new FDPasswordBox({domId:'password',name:'password',label:'密码:'});
+	new FDPasswordBox({domId:'rePassword',name:'rePassword',label:'确认密码:'});
+	new FDTextBox({domId:'email',name:"email",label:'邮箱:'});
+	new FDTextBox({domId:'address',width:'250px',name:"address",label:'地址:'});
+	new FDRadio({domId:'gender',name:"gender",label:'性别:',defaultValue:1,items:[{value:1,text:"男",checked:true},{value:0,text:"女"}]})
+	new FDSelectBox({domId:'country',name:"country",label:'选择国家:',items:[{value:1,text:'中国'},{value:2,text:'法国'},{value:3,text:'美国'}]})
+	new FDDatePick({domId:'birthday',name:"birthday",label:'出身日期:'})
+}
+function show() {
+	win.show(function(){
+		tip.innerHTML +=(' show callback<br>')
+	});
+}
+function showOther() {
+	win3.show();
+}
+function closeWin() {
+	win.close();
+}
+function setTitle() {
+	win.setTitle("标题222");
+}
+var content = 'hello<br>world';
+function appendContent() {
+	content +='<br> hello world.....';
+	win.setContent(content)
+}
+function moveTo() {
+	win.moveTo(400,300);
+}
+function moveToCenter() {
+	win.moveToCenter();
+}
+function confirmWin() {
+	FDWindow.confirm('确定要删除吗?',function(){
+		alert('删除成功')
+	});
+}
+function confirmWin2() {
+	FDWindow.confirm('今天吃饭了吗?',function(){
+		alert('哦')
+	},{yesText:'吃了',noText:'没吃'});
+}
+</script>
+</head>
+<body>
+
+<button onclick="show()">show</button>
+<button onclick="closeWin()">close</button>
+<button onclick="setTitle()">setTitle</button>
+<button onclick="appendContent()">appendContent</button>
+<button onclick="moveTo()">moveTo(400,300)</button>
+<button onclick="confirmWin()">confirmWin</button>
+<button onclick="confirmWin2()">confirmWin2</button>
+
+<div id="tip"></div>
+
+<div id="win" style="width: 252px;">
+<button onclick="moveToCenter();">move to center</button>
+Sunrise on the eastern coast is a special event. I stood at Dolphin’s Nose, a spur jutting out into the Bay of Bengal, to behold the breaking of the sun’s upper limb over the horizon of the sea. As the eastern sky started unfolding like the crimson petals of a gigantic flower, I was overcome by a wave of romantic feelings and nostalgia—vivid memorie not diminished by the fact that almost ten years had passed.
+<button onclick="showOther()">show other</button>
+</div>
+
+<div id="win2">
+（一）云水深处，锦年如梦
+
+千山万水，行尽江南。云水深处，依旧沉没着那段繁华的锦年。
+
+喜欢回忆那些青涩纯真的日子，没有烦恼，没有忧愁，只有灿烂明媚的笑靥。纤手拨乱的发丝，浅浅的含笑，深邃的眼眸，在阳光的照耀下折射出一种无法形容的美好。
+
+是的，这些在日光里妩媚的微笑，是一种美好。
+
+锦瑟华年，有人告诉我，所谓的美好，就是那些曾经出现过，在你生命中留下惊鸿一瞥的事物，让你永生难忘，而后来又莫名消失的。
+</div>
+
+<div id="win3" style="width: 400px;">
+	<div>
+		<table>
+			<tr><td id="username"></td></tr>
+			<tr><td id="password"></td></tr>
+			<tr><td id="rePassword"></td></tr>
+			<tr><td id="email"></td></tr>
+			<tr><td id="gender"></td></tr>
+			<tr><td id="birthday"></td></tr>
+			<tr><td id="address"></td></tr>
+			<tr><td id="country"></td></tr>
+		</table>
+	</div>
+</div>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+foot
+</pre>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Event test</title>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+
+<script type="text/javascript">
+window.onload=function() {
+	var btn1 = FDLib.getEl('b1');
+	var btn2 = FDLib.getEl('b2');
+	var btn3 = FDLib.getEl('b3');
+	var bm = FDLib.getEl('bm');
+	
+	var event = FDLib.event;
+	
+	var btn1Click = function() {
+		alert(1)
+	}
+	event.addEvent(btn1,'click',btn1Click);
+	
+	event.addEvent(btn2,'click',function() {
+		event.removeEvent(btn1,'click',btn1Click)
+	});
+	
+	event.addEvent(btn3,'click',function() {
+		var e = FDLib.event.getEvent();
+		alert('pageX:'+e.pageX + ' pageY:' + e.pageY);
+	});
+	
+	
+	// 添加多个事件
+	event.addEvent(bm,'click',function(){
+		alert('先执行事件1');
+	})
+	event.addEvent(bm,'click',function(){
+		alert('再执行事件2');
+	}) 
+	
+	event.registClickOtherHide(FDLib.getEl('btnShow'),FDLib.getEl('d'));
+}
+
+function showDiv() {
+	FDLib.getEl('d').style.display = "block";
+}
+</script>
+</head>
+<body>
+<button id="b1">btn1</button>
+<button id="b2">remove btn1's event</button>
+
+<button id="bm">点我可以执行多个事件</button>
+
+<button id="b3" style="position: absolute;top: 300px;left:300px;">position button</button>
+
+<button id="btnShow" onclick="showDiv();">showDiv</button>
+<div id="d" style="width: 100px;height: 100px;background-color: red;">
+<div style="width:50px;height: 50px;background-color: blue;"></div>
+</div>
+</body>
+</html>

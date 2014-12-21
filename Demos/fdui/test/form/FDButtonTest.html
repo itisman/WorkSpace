@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDButtonTest Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px;background-color: white;}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+
+
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+
+
+<script type="text/javascript" src="../../src/FDForm/FDButton.js"></script>
+
+<script type="text/javascript">
+
+var btn1;
+
+window.onload = function() {
+	btn1 = new FDButton({domId:'btn1',text:'按钮文本',onclick:function(){
+		alert(1)
+	}});
+}
+
+function setOnclickEvent() {
+	btn1.setOnclick(function(){
+		alert(2);
+	})
+}
+function setText() {
+	btn1.setText('按钮aaa')
+}
+function disable() {
+	btn1.disable();
+}
+function enable() {
+	btn1.enable();
+}
+function show() {
+	btn1.show();
+}
+function hide() {
+	btn1.hide();
+}
+</script>
+
+</head>
+<body>
+<div id="btn1"></div>
+<input type="button" onclick="setOnclickEvent()" value="setOnclickEvent"/>
+<input type="button" onclick="setText()" value="setText"/>
+<button onclick="disable()">disable</button>
+<button onclick="enable()">enable</button>
+<button onclick="show()">show</button>
+<button onclick="hide()">hide</button>
+
+<input type="button" value="禁用按钮" disabled="disabled">
+</html>

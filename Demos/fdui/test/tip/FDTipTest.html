@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDTip Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+
+<style type="text/css">
+body{
+background-color: white;
+}
+</style>
+<script type="text/javascript" src="../../src/FDTip/FDTip.js"></script>
+<script type="text/javascript" src="../../src/FDTip/FDTipUtil.js"></script>
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	var event = FDLib.event;
+	
+	// 单个创建
+	var tip1Dom = FDLib.getEl('tip1');
+	var tip1 = new FDTip();
+	event.addEvent(tip1Dom,'mouseover',function(){
+		var e = event.getEvent();
+		tip1.show(e,'查看tip1详情');
+	});
+	event.addEvent(tip1Dom,'mouseout',function(){
+		tip1.hide();
+	})
+	
+	// 单个创建,使用原始的title
+	var tip2Dom = FDLib.getEl('tip2');
+	var tip2 = new FDTip({delay:0});
+	event.addEvent(tip2Dom,'mouseover',function(){
+		var e = event.getEvent();
+		tip2.show(e);
+	});
+	event.addEvent(tip2Dom,'mouseout',function(){
+		tip2.hide();
+	})
+	
+	// 用FDTipUtil工具创建
+	var tip3Dom = FDLib.getEl('tip3');
+	var tip4Dom = FDLib.getEl('tip4');
+	FDTipUtil.addTip(tip3Dom,"这是tip3Dom的内容");
+	FDTipUtil.addTip(tip4Dom);
+	
+	
+	// 批量创建
+	var spans = FDLib.getEl('tips').getElementsByTagName('span');
+	for(var i=0;i<spans.length;i++){
+		var span = spans[i];
+		FDTipUtil.addTip(span,"这是" + span.innerHTML + "的内容");
+	}
+	
+	var spans = FDLib.getEl('tip7').getElementsByTagName('span');
+	for(var i=0;i<spans.length;i++){
+		var span = spans[i];
+		FDTipUtil.addTip(span,"这是" + span.innerHTML + "的内容");
+	}
+}
+</script>
+</head>
+<body>
+
+
+<a id="tip1">查看1</a>
+<br>
+<br>
+<br>
+<a id="tip2" title="立即显示的内容">立即显示</a>
+<br>
+<br>
+<br>
+<a id="tip3" title="用FDTipUtil工具创建">用FDTipUtil工具创建</a>
+<br>
+<br>
+<br>
+<a id="tip4" title="这里是具体查看4444的内容">显示title内容</a>
+<br>
+<br>
+<br>
+
+<div id="tips">
+	<span>批量生成提示1</span>
+	<span>批量生成提示2</span>
+	<span>批量生成提示3</span>
+	<span>批量生成提示4</span>
+</div>
+
+<div id="tip7" style="position: absolute;width:500px;height:70px;left: 400px;top:100px;border: 1px solid #ccc;">
+
+<span>浮层上的提示2</span>
+<span>浮层上的提示3</span>
+<span>浮层上的提示4</span>
+
+</div>
+</body>
+</html>

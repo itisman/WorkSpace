@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FDValidate Test</title>
+<!-- css -->
+<link href="../../style/fdui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{font-size: 12px}
+</style>
+<!-- lib js -->
+<script type="text/javascript" src="../../src/FDLib/FDLib.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.ajax.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.browser.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.dom.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.event.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.string.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDLib.util.js"></script>
+<script type="text/javascript" src="../../src/FDLib/FDTag.js"></script>
+<script type="text/javascript" src="../../src/FDLib/JString.js"></script>
+
+<script type="text/javascript" src="../../src/FDControl/FDControl.js"></script>
+<script type="text/javascript" src="../../src/FDForm/interface/FDField.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDComponent.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDFieldComponent.js"></script>
+
+<script type="text/javascript" src="../../src/FDValidate/FDValidateStore.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDBaseValidate.js"></script>
+<script type="text/javascript" src="../../src/FDValidate/FDValidate.js"></script>
+
+
+<script type="text/javascript" src="../../src/FDForm/FDTextBox.js"></script>
+<script type="text/javascript" src="../../src/FDForm/FDPasswordBox.js"></script>
+<script type="text/javascript">
+var controls
+window.onload = function() {
+	controls = [
+		new FDTextBox({domId:'t1',label:'验证正整数:',validates:[new FDValidate({errorMsg:'请输入正整数',successMsg:'验证成功',items:['positiveInt']})]})
+		,new FDTextBox({domId:'t2',label:'验证自然数:',validates:
+				[
+				 new FDValidate({errorMsg:'请输入自然数',items:['naturalNum']})
+				 ,new FDValidate({minLength:4,maxLength:10})
+				]})
+		,new FDTextBox({domId:'t3',label:'验证正数:',validates:[new FDValidate({errorMsg:'请输入大于零的数',label:'文本框',notNull:true,items:['positiveNum']})]})
+		,new FDTextBox({domId:'t4',label:'验证浮点数:',validates:[new FDValidate({errorMsg:'请输入浮点数',label:'浮点数',notNull:true,items:['floatNum']})]})
+		,new FDTextBox({domId:'t5',label:'验证正浮点数:',validates:[new FDValidate({errorMsg:'请输入正浮点数',label:'正浮点数',items:['positiveFloatNum']})]})
+		,new FDTextBox({domId:'t6',label:'验证非负浮点数:',validates:[new FDValidate({errorMsg:'请输入非负浮点数',label:'非负浮点数',items:['notNegativeFloatNum']})]})
+		,new FDTextBox({domId:'t7',label:'验证邮箱:',validates:[new FDValidate({errorMsg:'请输入正确的邮箱',label:'邮箱',items:['email']})]})
+		,new FDTextBox({domId:'t8',label:'验证手机号:',validates:[new FDValidate({errorMsg:'请输入正确的手机号',label:'手机号',items:['mobile']})]})
+		,new FDTextBox({domId:'t9',label:'验证电话:',validates:[new FDValidate({errorMsg:'请输入正确的电话号',label:'手机号',items:['tel']})]})
+	]
+}
+
+function validate() {
+	var result = true;
+	for(var i in controls) {
+		var val = controls[i].validate();
+		result = result && val;
+	}
+	FDLib.getEl('result').innerHTML = result;
+}
+
+function validateAlone() {
+	var num = FDLib.getEl('numAlone').value;
+	var validAlone = new FDValidate({errorMsg:'请输入正整数',successMsg:'验证成功',msgId:'vAlone',items:['positiveInt']})
+	validAlone.validate(num);
+}
+</script>
+</head>
+<body>
+验证结果:<span id="result"></span><br>
+
+<div id="t1"></div>
+<div id="t2"></div>
+<div id="t3"></div>
+<div id="t4"></div>
+<div id="t5"></div>
+<div id="t6"></div>
+<div id="t7"></div>
+<div id="t8"></div>
+<div id="t9"></div>
+
+
+<button onclick="validate()">validate</button>
+<br>
+============================
+<p>单独验证:</p>
+<input id="numAlone" type="text" value="123" />
+<div id="vAlone" style="font-size: 14px;color: green;"></div>
+<button onclick="validateAlone()">单独验证正整数</button>
+</body>
+</html>

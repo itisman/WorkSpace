@@ -1,0 +1,121 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * 选择框类FDSelectBox,继承自&lt;a href="FDItemComponent.html">FDItemComponent&lt;/a>&lt;br>
+<span class='line'>  3</span>  * @example 示例:
+<span class='line'>  4</span>  * &lt;pre>&lt;/code>
+<span class='line'>  5</span> var select1;
+<span class='line'>  6</span> var select2;
+<span class='line'>  7</span> 
+<span class='line'>  8</span> var genderItems = [{value:1,text:"男"},{value:0,text:"女"}];
+<span class='line'>  9</span> var constellationItems = [{value:0,text:"金牛座",date:'03-01'},{value:1,text:"天枰座",date:'04-01'}
+<span class='line'> 10</span> ,{value:2,text:"巨蟹座",date:'05-01'},{value:3,text:"双子座",date:'06-01'}];
+<span class='line'> 11</span> 
+<span class='line'> 12</span> window.onload = function() {
+<span class='line'> 13</span> 	select1 = new FDSelectBox({name:"gender",items:genderItems});
+<span class='line'> 14</span> 	select1.renderTo('gender');
+<span class='line'> 15</span> 	
+<span class='line'> 16</span> 	select2 = new FDSelectBox({domId:'constellation',name:'constellation',items:constellationItems,label:'星坐:'});
+<span class='line'> 17</span> }&lt;/code>&lt;/pre>
+<span class='line'> 18</span>  * 2012-8-1
+<span class='line'> 19</span>  * @param options 参见{@link #getOptions}返回的对象
+<span class='line'> 20</span>  * @constructor
+<span class='line'> 21</span>  */</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">FDSelectBox</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">	</span><span class="NAME">FDSelectBox.superclass.constructor.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="NAME">FDLib.extend</span><span class="PUNC">(</span><span class="NAME">FDSelectBox</span><span class="PUNC">,</span><span class="NAME">FDItemComponent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/**
+<span class='line'> 29</span>  * 覆盖父类方法,获取组件的默认属性
+<span class='line'> 30</span>    @return &lt;pre>&lt;code>返回json数据类型
+<span class='line'> 31</span>  * {
+<span class='line'> 32</span>  *  domId:null // 定位的节点ID
+<span class='line'> 33</span> 	,label:"" // 控件前面要显示的文字
+<span class='line'> 34</span> 	,labelAlign:'right' // label水平对齐方式
+<span class='line'> 35</span> 	,labelValign:'middle' // label垂直对齐方式
+<span class='line'> 36</span> 	,name:"" // 控件的name
+<span class='line'> 37</span> 	,width:"" // 控件的宽,如'120px'
+<span class='line'> 38</span> 	,height:"" // 控件的高,如'30px'
+<span class='line'> 39</span> 	,validates:[] // 验证类
+<span class='line'> 40</span> 	,items:[] 
+<span class='line'> 41</span> 	// 是否显示默认选项
+<span class='line'> 42</span> 	,isShowDefaultItem:true
+<span class='line'> 43</span> 	// 默认选项的文本
+<span class='line'> 44</span> 	,defaultItemText:'-请选择-'
+<span class='line'> 45</span> 	// 默认选项的值
+<span class='line'> 46</span> 	,defaultItemValue:''
+<span class='line'> 47</span> 	,defaultValue:''
+<span class='line'> 48</span>  * }&lt;/code>&lt;/pre>
+<span class='line'> 49</span>  */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="COMM">//@override</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="NAME">FDSelectBox.prototype.getOptions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">FDSelectBox.superclass.getOptions.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">FDLib.util.apply</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">		</span><span class="COMM">// 是否显示默认选项</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">		</span><span class="NAME">isShowDefaultItem</span><span class="PUNC">:</span><span class="KEYW">true</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">		</span><span class="COMM">// 默认选项的文本</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">		</span><span class="PUNC">,</span><span class="NAME">defaultItemText</span><span class="PUNC">:</span><span class="STRN">'-请选择-'</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">		</span><span class="COMM">// 默认选项的值</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">		</span><span class="PUNC">,</span><span class="NAME">defaultItemValue</span><span class="PUNC">:</span><span class="STRN">''</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">		</span><span class="PUNC">,</span><span class="NAME">defaultValue</span><span class="PUNC">:</span><span class="STRN">''</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 63</span> 
+<span class='line'> 64</span> </span><span class="COMM">/**
+<span class='line'> 65</span>  * @private
+<span class='line'> 66</span>  */</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="COMM">// 重写父类的方法</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="COMM">//@override</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="NAME">FDSelectBox.prototype.buildItemsHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.options.name</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">		</span><span class="NAME">id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"_id"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">selectStr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&lt;select id="'</span><span class="PUNC">+</span><span class="NAME">id</span><span class="PUNC">+</span><span class="STRN">'" name="'</span><span class="PUNC">+</span><span class="NAME">name</span><span class="PUNC">+</span><span class="STRN">'">'</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">		</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this._getSelectItems</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'&lt;/select>'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">selectStr</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="NAME">FDSelectBox.prototype._getSelectItems</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defItemHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._buildDefaultItem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="COMM">// 调用父类的buildItemsHtml方法</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">itemsHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">FDSelectBox.superclass.buildItemsHtml.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">defItemHtml</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">itemsHtml</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span> 
+<span class='line'> 87</span> </span><span class="NAME">FDSelectBox.prototype._buildDefaultItem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defItem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">this.options.isShowDefaultItem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.options.defaultItemValue</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">			</span><span class="NAME">text</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.options.defaultItemText</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">		</span><span class="NAME">defItem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&lt;option value="'</span><span class="PUNC">+</span><span class="NAME">value</span><span class="PUNC">+</span><span class="STRN">'">'</span><span class="PUNC">+</span><span class="NAME">text</span><span class="PUNC">+</span><span class="STRN">'&lt;/option>'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">defItem</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 97</span> 
+<span class='line'> 98</span> </span><span class="COMM">/**
+<span class='line'> 99</span>  * @private
+<span class='line'>100</span>  */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="COMM">//@override</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="NAME">FDSelectBox.prototype.getItemTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">'&lt;option value="{value}">{text}&lt;/option>'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>105</span> 
+<span class='line'>106</span> </span><span class="COMM">/**
+<span class='line'>107</span>  * @private
+<span class='line'>108</span>  */</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="COMM">// 重写父类的方法</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="COMM">//@override</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="NAME">FDSelectBox.prototype.getControlItems</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.controlDiv.getElementsByTagName</span><span class="PUNC">(</span><span class="STRN">'select'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>114</span> </span></pre></body></html>
