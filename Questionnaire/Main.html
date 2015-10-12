@@ -1,62 +1,96 @@
 <html>
 <header>
     <h1>% Grid system %</h1>
-    <p>(resize to have fun)</p>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </header>
 
 <body>
-    <div class="grid">
-        <article class="module desktop-3 tablet-4">1</article>
-        <article class="module desktop-3 tablet-4">2</article>
-        <article class="module desktop-3 tablet-4">3</article>
-        <article class="module desktop-3 tablet-6">4</article>
-        <article class="module desktop-4 tablet-6">5</article>
-        <article class="module desktop-4 tablet-12">6</article>
-        <article class="module desktop-4 tablet-6">7</article>
-        <article class="module desktop-6 tablet-6">8</article>
-        <article class="module desktop-6 tablet-12">9</article>
-        <article class="module desktop-2 tablet-4">10</article>
-        <article class="module desktop-2 tablet-4">11</article>
-        <article class="module desktop-2 tablet-4">12</article>
-        <article class="module desktop-2 tablet-4">13</article>
-        <article class="module desktop-2 tablet-4">14</article>
-        <article class="module desktop-2 tablet-4">15</article>
+    <div class='questionsWrapper'>
+        <div class='questionWrapper'>
+            <div class='questionTitle'>
+                <p>Question 1: How to find the most common bi-grams with BigQuery?</p>
+            </div>
+            <div class="grid">
+                <div class="module desktop-2 tablet-4 cellPhone-6">
+                    <img src="resources/imgs/20151009135928_51a73a@iclarge.jpg">
+                    <p class='answerDesc'>I'm an answer!!!!</p>
+                </div>
+                <div class="module desktop-2 tablet-4 cellPhone-6">
+                    <img src="resources/imgs/20151009135928_51a73a@iclarge.jpg">
+                    <p class='answerDesc'>I'm an answer!!!!</p>
+                </div>
+                <div class="module desktop-2 tablet-4 cellPhone-6">
+                    <img src="resources/imgs/20151009135928_51a73a@iclarge.jpg">
+                    <p class='answerDesc'>I'm an answer!!!!</p>
+                </div>
+                <div class="module desktop-2 tablet-4 cellPhone-6">
+                    <img src="resources/imgs/20151009135928_51a73a@iclarge.jpg">
+                    <p class='answerDesc'>I'm an answer!!!!</p>
+                </div>
+                <div class="module desktop-2 tablet-4 cellPhone-6">
+                    <img src="resources/imgs/20151009135928_51a73a@iclarge.jpg">
+                    <p class='answerDesc'>I'm an answer!!!!</p>
+                </div>
+                <div class="module desktop-2 tablet-4 cellPhone-6">
+                    <img src="resources/imgs/20151009135928_51a73a@iclarge.jpg">
+                    <p class='answerDesc'>I'm an answer!!!!</p>
+                </div>
+            </div>
+        </div>
+        <div class='questionWrapper'>
+            <div class='questionTitle'>
+                <p>Question 2: How to send hash of hash of array items to csv?</p>
+            </div>
+            <div class="grid">
+                <div class="module desktop-3 tablet-6">
+                    <p class='answerDesc'>I'm an much longer longer longer longer longer longer longer longer longer answer!!!!</p>
+                </div>
+                <div class="module desktop-3 tablet-6">
+                    <p class='answerDesc'>I'm an much longer longer longer longer longer longer longer longer longer answer!!!!</p>
+                </div>
+                <div class="module desktop-3 tablet-6">
+                    <p class='answerDesc'>I'm an much longer longer longer longer longer longer longer longer longer answer!!!!</p>
+                </div>
+                <div class="module desktop-3 tablet-6">
+                    <p class='answerDesc'>I'm an much longer longer longer longer longer longer longer longer longer answer!!!!</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <a id='button-prev' href="#" class="btn button-prev">Prev</a>
         <a id='button-next' href="#" class="btn button-next">Next</a>
     </div>
     <ul class="breadcrumb">
-      <li>
-        <a href="#">
-          <span class="icon icon-file">1</span>
-          <span class="text">Q1: Are you question1 ?</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon icon-file">2</span>
-          <span class="text">Q1: Are you question2 ?</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon icon-file">3</span>
-          <span class="text">Q1: Are you question3 ?</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon icon-file">4</span>
-          <span class="text">Q1: Are you question4 ?</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon icon-home">5</span>
-        </a>
-      </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">1</span>
+                <span class="text">Q1: Are you question1 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">2</span>
+                <span class="text">Q1: Are you question2 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">3</span>
+                <span class="text">Q1: Are you question3 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">4</span>
+                <span class="text">Q1: Are you question4 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-home">5</span>
+            </a>
+        </li>
     </ul>
     <div class="progress">
         <span class="bar" style="width: 19.05%;"></span>
@@ -66,15 +100,4 @@
 </body>
 
 </html>
-<script>
-    (function() {
-        var myEl = document.getElementById('button-next');
-        myEl.addEventListener('click', function() {
-            alert('Hello world');
-        }, false);
-
-        myEl.addEventListener('click', function() {
-            alert('Hello world again!!!');
-        }, false);
-    })();
-</script>
+<script></script>
