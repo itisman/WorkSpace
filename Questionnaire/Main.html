@@ -1,0 +1,80 @@
+<html>
+<header>
+    <h1>% Grid system %</h1>
+    <p>(resize to have fun)</p>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</header>
+
+<body>
+    <div class="grid">
+        <article class="module desktop-3 tablet-4">1</article>
+        <article class="module desktop-3 tablet-4">2</article>
+        <article class="module desktop-3 tablet-4">3</article>
+        <article class="module desktop-3 tablet-6">4</article>
+        <article class="module desktop-4 tablet-6">5</article>
+        <article class="module desktop-4 tablet-12">6</article>
+        <article class="module desktop-4 tablet-6">7</article>
+        <article class="module desktop-6 tablet-6">8</article>
+        <article class="module desktop-6 tablet-12">9</article>
+        <article class="module desktop-2 tablet-4">10</article>
+        <article class="module desktop-2 tablet-4">11</article>
+        <article class="module desktop-2 tablet-4">12</article>
+        <article class="module desktop-2 tablet-4">13</article>
+        <article class="module desktop-2 tablet-4">14</article>
+        <article class="module desktop-2 tablet-4">15</article>
+    </div>
+    <div>
+        <a id='button-prev' href="#" class="btn button-prev">Prev</a>
+        <a id='button-next' href="#" class="btn button-next">Next</a>
+    </div>
+    <ul class="breadcrumb">
+      <li>
+        <a href="#">
+          <span class="icon icon-file">1</span>
+          <span class="text">Q1: Are you question1 ?</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon icon-file">2</span>
+          <span class="text">Q1: Are you question2 ?</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon icon-file">3</span>
+          <span class="text">Q1: Are you question3 ?</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon icon-file">4</span>
+          <span class="text">Q1: Are you question4 ?</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon icon-home">5</span>
+        </a>
+      </li>
+    </ul>
+    <div class="progress">
+        <span class="bar" style="width: 19.05%;"></span>
+    </div>
+    <footer>- drus -</footer>
+    <hr />
+</body>
+
+</html>
+<script>
+    (function() {
+        var myEl = document.getElementById('button-next');
+        myEl.addEventListener('click', function() {
+            alert('Hello world');
+        }, false);
+
+        myEl.addEventListener('click', function() {
+            alert('Hello world again!!!');
+        }, false);
+    })();
+</script>
