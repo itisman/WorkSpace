@@ -1,5 +1,3 @@
-/* GRID SYSTEM */
-
 @import url(http://fonts.googleapis.com/css?family=Montserrat:700);
  .module {
     float: left;
@@ -200,7 +198,8 @@
         color: #666;
     }
 }
-/* Boring stuff */
+
+/* init */
 
 * {
     margin: 0;

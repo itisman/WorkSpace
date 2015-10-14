@@ -1,0 +1,70 @@
+<html>
+<header>
+    <h1>% Grid system %</h1>
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+</header>
+
+<body ng-app="question" ng-controller="questionController">
+    <div class='questionsWrapper'>
+        <div ng-repeat='question in questions' class='questionWrapper'>
+            <div class='questionTitle'>
+                <p>{{ question.title }}</p>
+            </div>
+            <div class='grid'>
+                <div ng-repeat='option in question.options' class="module desktop-2 tablet-4 cellPhone-6" ng-if='option.img !== undefined'
+                ng-click='onSelectOption(option)'>
+                    <img ng-src="{{ option.img }}">
+                    <p class='answerDesc'>{{ option.title}}</p>
+                </div>
+                <div ng-repeat='option in question.options' class="module desktop-3 tablet-6" ng-if='option.img === undefined' ng-click='onSelectOption(option)'>
+                    <p class='answerDesc'>{{ option.title}}</p>
+                </div>
+            </div>
+        </div>
+    <div>
+        <a id='button-prev' href="#" class="btn button-prev">Prev</a>
+        <a id='button-next' href="#" class="btn button-next">Next</a>
+    </div>
+    <!--
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">
+                <span class="icon icon-file">1</span>
+                <span class="text">Q1: Are you question1 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">2</span>
+                <span class="text">Q1: Are you question2 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">3</span>
+                <span class="text">Q1: Are you question3 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-file">4</span>
+                <span class="text">Q1: Are you question4 ?</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon icon-home">5</span>
+            </a>
+        </li>
+    </ul>
+    <div class="progress">
+        <span class="bar" style="width: 19.05%;"></span>
+    </div>
+    --!>
+    <footer>- drus -</footer>
+    <hr />
+</body>
+
+</html>
+<script src="../../../../lib/angular.js"></script>
+<script src="questionController.js"></script>
