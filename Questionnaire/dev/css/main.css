@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:700);
- .module {
+.module {
     float: left;
     width: 98%;
     margin-left: 2%;
@@ -8,6 +8,18 @@
     padding: 1em;
     min-height: 60px;
     transition: all 0.3s linear;
+    cursor: pointer;
+    border-width: thin;
+    border-style: solid;
+    border-color: #212121;
+    border-radius: 10px;
+}
+.selectedOption {
+    color: yellow;
+    border-color: yellow;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 20px;
 }
 .grid {
     margin-left: -2%;
@@ -19,13 +31,11 @@
     display: block;
     clear: both;
 }
-
 @media only screen and (min-width: 281px) {
     .cellPhone-6 {
         width: 48%;
     }
 }
-
 @media only screen and (min-width: 481px) {
     .tablet-1 {
         width: 6.33333333%;
@@ -42,7 +52,7 @@
         color: #666;
     }
     .tablet-3 {
-        width: 23%; 
+        width: 23%;
     }
     .tablet-3:after {
         content: ' (25%)';
@@ -198,7 +208,6 @@
         color: #666;
     }
 }
-
 /* init */
 
 * {
@@ -242,21 +251,6 @@ body {} div {
     z-index: 0;
     position: relative;
 }
-/*
-div:nth-child(3) {
-  background: #7cd4d4 url(http://www.graphicartsunit.com/images/noise.png);
-}
-div:nth-child(4) {
-  background: #e2df45 url(http://www.graphicartsunit.com/images/noise.png);
-}
-div:nth-child(5) {
-  background: #e8afbb url(http://www.graphicartsunit.com/images/noise.png);
-}
-div:nth-child(6) {
-  background: #8bc3e5 url(http://www.graphicartsunit.com/images/noise.png);
-}
-*/
-
 .btn {
     font-family: lato, sans-serif;
     font-weight: bold;
@@ -268,6 +262,7 @@ div:nth-child(6) {
     padding: 20px 40px 20px 40px;
     position: relative;
     border: 3px solid #03384b;
+    cursor: pointer;
 }
 .btn:before {
     border: 3px solid #f9f6f1;
@@ -280,6 +275,7 @@ div:nth-child(6) {
 }
 .button-prev {
     border-radius: 5em 5px 5px 5em;
+    outline-color: transparent;
 }
 .button-prev:before {
     border-radius: 5em 5px 5px 5em;
@@ -288,6 +284,7 @@ div:nth-child(6) {
 }
 .button-next {
     border-radius: 5px 5em 5em 5px;
+    outline-color: transparent;
 }
 .button-next:before {
     border-radius: 5px 5em 5em 5px;
@@ -311,115 +308,4 @@ div:nth-child(6) {
     background: transparent;
     left: -1px;
     top: -1px;
-}
-/* progress */
-
-@media only screen and (min-width: 481px) {
-    .progress {
-        position: static;
-        top: auto;
-        left: auto;
-        width: 80%;
-        height: 30px;
-        margin: 50px auto 0;
-        border-radius: 2px;
-    }
-}
-.progress {
-    /*
-    position: absolute;
-    display: block;
-    */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    margin: 0;
-    background: #e6e6e6;
-    border-radius: 0;
-    overflow: hidden;
-}
-
-.progress .bar {
-    display: block;
-    width: 0;
-    height: 100%;
-    background: #4CB76D;
-    -webkit-transition: width 1.2s;
-    transition: width 1.2s;
-}
-
-
-ul.breadcrumb {
-  margin-left: 50px;
-  display: inline-block;
-  list-style: none;
-}
-ul.breadcrumb li {
-  float: right;
-  padding: 5px;
-  background-color: #59A386;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  position: relative;
-  margin-left: -50px;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  margin-top: 3px;
-}
-ul.breadcrumb li a {
-  overflow: hidden;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  text-decoration: none;
-  height: 50px;
-  color: #509378;
-  background-color: #65BA99;
-  text-align: center;
-  min-width: 50px;
-  display: block;
-  line-height: 50px;
-  padding-left: 52px;
-  padding-right: 33.33333px;
-  width: 50px;
-}
-ul.breadcrumb li a .icon {
-  display: inline-block;
-}
-ul.breadcrumb li a .text {
-  display: none;
-  opacity: 0;
-}
-ul.breadcrumb li a:hover {
-  width: 150px;
-  background-color: #77c2a5;
-}
-ul.breadcrumb li a:hover .text {
-  display: inline-block;
-  opacity: 1;
-}
-ul.breadcrumb li:last-child a {
-  padding: 0;
-}
-ul.breadcrumb li:last-child:hover {
-  padding: 3px;
-  margin-top: 0;
-}
-ul.breadcrumb li:last-child:hover a {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-}
-
-
-.selectedOption {
-    color : yellow
 }

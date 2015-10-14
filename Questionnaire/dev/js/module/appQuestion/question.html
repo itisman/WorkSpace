@@ -1,7 +1,9 @@
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <header>
-    <h1>% Grid system %</h1>
+    <h1>Questionnaire</h1>
     <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../../../lib/bootstrap-3.3.5-dist/css/bootstrap.css"> --!>
 </header>
 
 <body ng-app="question" ng-controller="questionController">
@@ -16,7 +18,7 @@
                     <img ng-src="{{ option.img }}">
                     <p class='answerDesc'>{{ option.title}}</p>
                 </div>
-                <div ng-repeat='option in question.options' class="module desktop-3 tablet-6" ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)'>
+                <div ng-repeat='option in question.options' class="module desktop-3 tablet-6" ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'>
                     <p class='answerDesc'>{{ option.title}}</p>
                 </div>
             </div>
@@ -25,46 +27,11 @@
         <button id='button-prev' href="#" class="btn button-prev" ng-click='onPrevQuestion()'>Prev</button>
         <button id='button-next' href="#" class="btn button-next" ng-click='onNextQuestion()'>Next</button>
     </div>
-    <!--
-    <ul class="breadcrumb">
-        <li>
-            <a href="#">
-                <span class="icon icon-file">1</span>
-                <span class="text">Q1: Are you question1 ?</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="icon icon-file">2</span>
-                <span class="text">Q1: Are you question2 ?</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="icon icon-file">3</span>
-                <span class="text">Q1: Are you question3 ?</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="icon icon-file">4</span>
-                <span class="text">Q1: Are you question4 ?</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="icon icon-home">5</span>
-            </a>
-        </li>
-    </ul>
-    <div class="progress">
-        <span class="bar" style="width: 19.05%;"></span>
-    </div>
-    --!>
     <footer>- drus -</footer>
     <hr />
 </body>
 
 </html>
 <script src="../../../../lib/angular.js"></script>
+<script src="../../../../lib/jquery/jquery-2.1.3.js"></script>
 <script src="questionController.js"></script>
