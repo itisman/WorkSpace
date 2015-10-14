@@ -4,12 +4,28 @@ angular.module('question', []).controller('questionController', function($scope)
     //}).error(function(data){
     //    $scope.questions = data;
     //});
-    $scope.onSelectOption = function(option) {
-        window.console.log(option);
+    $scope.onSelectOption = function($event, question, option) {
+        question.options.forEach(function(option){
+            option.isSelected = false; 
+        });
+        option.isSelected = true;
+        question.answer = option;
     };
 
-    $scope.questions = [{
-        title: 'Im question 1',
+    $scope.onPrevQuestion = function(){
+        window.console.log(this.questions);
+    };
+
+    $scope.onPrevQuestion = function(){
+        window.console.log(this.questions);
+        var temp = this.questions[2];
+        this.questions[2] = this.questions[0];
+        this.questions[0] = temp;
+    };
+
+    //setTimeout(function(){
+        $scope.questions = [{
+        title: 'How to make the require in node.js to be always relative to the root folder of the project?',
         description: 'Im question 1 description',
         options: [{
             title: 'im option1',
@@ -29,7 +45,7 @@ angular.module('question', []).controller('questionController', function($scope)
             img: '../../../../resource/img/20151009135928_51a73a@iclarge.jpg'
         }]
     }, {
-        title: 'Im question 1',
+        title: 'What is your greatest strength?',
         description: 'Im question 1 description',
         options: [{
             title: 'im option1',
@@ -49,7 +65,7 @@ angular.module('question', []).controller('questionController', function($scope)
             img: '../../../../resource/img/20151009135928_51a73a@iclarge.jpg'
         }]
     }, {
-        title: 'Im question 1',
+        title: 'Do you consider yourself successful? Why? ',
         description: 'Im question 1 description',
         options: [{
             title: 'im option1',
@@ -65,4 +81,6 @@ angular.module('question', []).controller('questionController', function($scope)
             description: 'Im option 1 description'
         }]
     }];
+    //}, 2000);
+    
 });

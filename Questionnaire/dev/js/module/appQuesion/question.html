@@ -12,18 +12,18 @@
             </div>
             <div class='grid'>
                 <div ng-repeat='option in question.options' class="module desktop-2 tablet-4 cellPhone-6" ng-if='option.img !== undefined'
-                ng-click='onSelectOption(option)'>
+                    ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'}>
                     <img ng-src="{{ option.img }}">
                     <p class='answerDesc'>{{ option.title}}</p>
                 </div>
-                <div ng-repeat='option in question.options' class="module desktop-3 tablet-6" ng-if='option.img === undefined' ng-click='onSelectOption(option)'>
+                <div ng-repeat='option in question.options' class="module desktop-3 tablet-6" ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)'>
                     <p class='answerDesc'>{{ option.title}}</p>
                 </div>
             </div>
         </div>
     <div>
-        <a id='button-prev' href="#" class="btn button-prev">Prev</a>
-        <a id='button-next' href="#" class="btn button-next">Next</a>
+        <button id='button-prev' href="#" class="btn button-prev" ng-click='onPrevQuestion()'>Prev</button>
+        <button id='button-next' href="#" class="btn button-next" ng-click='onNextQuestion()'>Next</button>
     </div>
     <!--
     <ul class="breadcrumb">
