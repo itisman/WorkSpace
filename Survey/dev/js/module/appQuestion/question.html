@@ -1,16 +1,20 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <header>
-    <h1>Survey</h1>
-    <!-- <link rel="stylesheet" type="text/css" href="../../../css/main.css"> --!>
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css"> 
     <!-- <link rel="stylesheet" type="text/css" href="../../../../lib/bootstrap-3.3.5-dist/css/bootstrap.css"> --!>
 </header>
 
 <body ng-app="question" ng-controller="questionController">
+    <div class='header'>
+        <img ng-src="{{ logUrl }}">
+        <p>{{ logDesc }}</p>
+    </div>
     <div class='questionsWrapper'>
         <div ng-repeat='question in questions' class='questionWrapper'>
             <div class='questionTitle'>
                 <p>{{ question.title }}</p>
+                <p>{{ question.warningMessage }}</p>
             </div>
             <div class='grid'>
                 <div ng-repeat='option in question.options' class="module desktop-2 tablet-4 cellPhone-6" ng-if='option.img !== undefined'
