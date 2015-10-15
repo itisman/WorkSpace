@@ -1,4 +1,7 @@
+/*jslint devel: true, expr:true */ /*globals angular*/
 angular.module('question', []).controller('questionController', function($scope) {
+    'use strict';
+
     /**
         $http.get('../resource/json/questions.json').success(function(data) {
             $scope.questions = data;
@@ -82,17 +85,30 @@ angular.module('question', []).controller('questionController', function($scope)
     function initService() {
         return {
             getQuestions: function(oParam, fnSCallback, fnFCallback) {
-                fnSCallback && fnSCallback(mockData.question[$scope.currentGroupIndex]);
+                if (oParam) {
+                    fnSCallback && fnSCallback(mockData.question[$scope.currentGroupIndex]);
+                } else {
+
+                    fnFCallback && fnFCallback();
+                }
             },
             saveLogs: function(oParam, fnSCallback, fnFCallback) {
-                console.log(oParam);
-                fnSCallback && fnSCallback();
+                if (oParam) {
+                    window.console.log(oParam);
+                    fnSCallback && fnSCallback();
+                } else {
+                    fnFCallback && fnFCallback();
+                }
             },
             saveAnswers: function(oParam, fnSCallback, fnFCallback) {
-                console.log(oParam);
-                fnSCallback && fnSCallback();
+                if (oParam) {
+                    console.log(oParam);
+                    fnSCallback && fnSCallback();
+                } else {
+                    fnFCallback && fnFCallback();
+                }
             }
-        }
+        };
     }
 
     function initMockData() {

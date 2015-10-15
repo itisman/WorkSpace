@@ -17,8 +17,6 @@
 .selectedOption {
     color: yellow;
     border-color: yellow;
-    border-style: solid;
-    border-width: thin;
     border-radius: 20px;
 }
 .grid {
