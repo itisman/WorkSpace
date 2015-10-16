@@ -14,8 +14,9 @@ angular.module('question', []).controller('questionController', function($scope)
     //  ##################################################
     //  Init
     //  ##################################################
-    var mockData = initMockData()
+    var mockData = initMockData();
     var oServices = initService();
+    $scope.themeUrl = '../../../css/theme/desert.css';
     $scope.logUrl = '../../../../resource/img/logo_be22f55.png';
     $scope.logDesc = 'Here is the cashbus survey!';
 
@@ -32,6 +33,8 @@ angular.module('question', []).controller('questionController', function($scope)
 
     //Using to record current question group index.
     $scope.currentGroupIndex = 0;
+    var totalGroups = mockData.question.length;
+    $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100)+ '%';
 
     oServices.getQuestions({}, function(data) {
         $scope.questions = data;
@@ -83,6 +86,7 @@ angular.module('question', []).controller('questionController', function($scope)
             oServices.saveLogs($scope.activityLog);
             oServices.saveAnswers($scope.questions);
             $scope.currentGroupIndex -= 1;
+            $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100)+ '%';
             oServices.getQuestions({}, function(data) {
                 $scope.questions = data;
                 $scope.$digest();
@@ -99,6 +103,7 @@ angular.module('question', []).controller('questionController', function($scope)
             oServices.saveLogs($scope.activityLog);
             oServices.saveAnswers($scope.questions);
             $scope.currentGroupIndex += 1;
+            $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100)+ '%';
             oServices.getQuestions({}, function(data) {
                 $scope.questions = data;
                 $scope.$digest();
@@ -132,7 +137,7 @@ angular.module('question', []).controller('questionController', function($scope)
                 if (oParam) {
                     setTimeout(function() {
                         fnSCallback && fnSCallback(mockData.question[$scope.currentGroupIndex]);
-                    }, 1000)
+                    }, 1000);
                 } else {
 
                     fnFCallback && fnFCallback();
@@ -143,7 +148,7 @@ angular.module('question', []).controller('questionController', function($scope)
                     setTimeout(function() {
                         window.console.log(oParam);
                         fnSCallback && fnSCallback();
-                    }, 1000)
+                    }, 1000);
                 } else {
                     fnFCallback && fnFCallback();
                 }
@@ -153,7 +158,7 @@ angular.module('question', []).controller('questionController', function($scope)
                     setTimeout(function() {
                         console.log(oParam);
                         fnSCallback && fnSCallback();
-                    }, 1000)
+                    }, 1000);
                 } else {
                     fnFCallback && fnFCallback();
                 }
@@ -181,10 +186,10 @@ angular.module('question', []).controller('questionController', function($scope)
                     selectMode: 1,
                     options: [{
                         id : 'q2o1',
-                        title: '与情人到有很多人且社交活动频繁的地方',
+                        title: '与情人到有很多人且社交活动频繁的地方'
                     }, {
                         id : 'q2o2',
-                        title: '待在家里与情人做一些特别的事情，例如观赏一部有趣的电影并享用你最喜欢的外卖食物',
+                        title: '待在家里与情人做一些特别的事情，例如观赏一部有趣的电影并享用你最喜欢的外卖食物'
                     }]
                 }, {
                     id : 'q3',
@@ -300,6 +305,6 @@ angular.module('question', []).controller('questionController', function($scope)
                     }]
                 }]
             ]
-        }
+        };
     }
 });
