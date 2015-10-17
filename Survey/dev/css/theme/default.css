@@ -1,0 +1,104 @@
+/*********************  Option  ******************/
+.option {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0.2em;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background: 0 0;
+    vertical-align: top;
+    transition: border-color .3s;
+}
+.textOption {
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+}
+.imgOption {
+    border: 5px solid #e6e6e6;
+    color: #333;
+}
+
+.selectedOption.textOption {
+    color: white;
+    background-color: green;
+}
+.selectedOption.imgOption {
+    border-color: #4CB76D;
+}
+
+.imgOption .description{
+    position: absolute;
+    bottom: 0px;
+    background-color: white;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    line-height: 1.5em;
+}
+
+.textOption .description {
+    padding: 10px;
+}
+
+/*********************  Question  ******************/
+.questions {
+    clear: both;
+    text-align: center;
+}
+.question-wrap {
+    width: 90%;
+    margin: 0 auto;
+}
+.question-wrap .title {
+    float: none;
+    margin: 50px 0 10 0px;
+    color: rgba(119, 122, 121, 1);
+    font-size: larger;
+}
+.question-wrap .title .warning{
+    color: #c33;
+    font-weight: 100;
+    font-size: medium;
+}
+
+
+/*********************  Button  ******************/
+.button {
+    width: 45%;
+    height: 3em;
+    background-color: green;
+    border-radius: 1.5em;
+    color: white;
+    cursor: pointer;
+}
+
+.button-wrap {
+    margin: 2em 0 1em 0;
+}
+
+/*********************  Progress  ******************/
+.progress {
+    width: 100%;
+    height: 10px;
+}
+.progress-wrap {
+    background: white;
+    margin: 5em 0 0 0;
+    overflow: hidden;
+    position: relative;
+}
+.progress-wrap .progress-bar {
+    background: green;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+
+/*********************  Header  ******************/
+.header {
+    text-align: center;
+}

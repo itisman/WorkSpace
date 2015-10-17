@@ -1,41 +1,41 @@
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <header>
     <link rel="stylesheet" type="text/css" href="../../../css/main.css">
-    <link rel="stylesheet" type="text/css" ng-href="{{ themeUrl }}"> 
+    <link rel="stylesheet" type="text/css" ng-href="{{ themeUrl }}">
     <!-- <link rel="stylesheet" type="text/css" href="../../../../lib/bootstrap-3.3.5-dist/css/bootstrap.css"> --!>
 </header>
 
 <body ng-app="question" ng-controller="questionController">
     <div class='header'>
-        <img ng-src="{{ logUrl }}">
-        <p>{{ logDesc }}</p>
+        <img ng-src="{{ logoUrl }}" class='logo'>
+        <h1>{{ title }}</h1>
     </div>
-    <div class='questionsWrapper'>
-        <div ng-repeat='question in questions' class='questionWrapper'>
-            <div class='questionTitle'>
+    <div class='questions'>
+        <div ng-repeat='question in questions' class='question-wrap'>
+            <div class='title'>
                 <p>{{ question.title }}</p>
-                <p>{{ question.warningMessage }}</p>
+                <p class='warning'>{{ question.warningMessage }}</p>
             </div>
-            <div class='grid'>
-                <div ng-repeat='option in question.options' class="module desktop-2 tablet-4 cellPhone-6" ng-if='option.img !== undefined'
+            <div class='options'>
+                <div class="option imgOption" ng-repeat='option in question.options' ng-if='option.img !== undefined'
                     ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'}>
                     <img ng-src="{{ option.img }}">
-                    <p class='answerDesc'>{{ option.title}}</p>
+                    <p class='description'>{{ option.title}}</p>
                 </div>
-                <div ng-repeat='option in question.options' class="module desktop-3 tablet-6" ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'>
-                    <p class='answerDesc'>{{ option.title}}</p>
+                <div class="option textOption" ng-repeat='option in question.options' ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'>
+                    <p class='description'>{{ option.title}}</p>
                 </div>
             </div>
         </div>
-    <div>
-        <button id='button-prev' href="#" class="btn button-prev" ng-click='onPrevQuestion()'>Prev</button>
-        <button id='button-next' href="#" class="btn button-next" ng-click='onNextQuestion()'>Next</button>
-    </div>
     <div class='footer'>
         <div class="progress-wrap progress">
             <div class="progress-bar progress" ng-style=" { 'width' : currentProgress }"></div>
         </div> 
+        <div class= 'button-wrap'>
+            <button id='button-prev' href="#" class="button button-prev" ng-click='onPrevQuestion()'>{{ prevButtonText }}</button>
+            <button id='button-next' href="#" class="button button-next" ng-click='onNextQuestion()'>{{ nextButtonText }}</button>
+        </div>
     </div>
 </body>
 </html>
