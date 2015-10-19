@@ -40,7 +40,7 @@ angular.module('question', []).controller('questionController', function($scope)
     var totalGroups = mockData.question.length;
     $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100) + '%';
 
-    oServices.getQuestions({}, function(data) {
+    oServices.getQuestions({ currentGroupIndex : $scope.currentGroupIndex}, function(data) {
         $scope.questions = data;
         $scope.$digest();
     });
@@ -63,16 +63,16 @@ angular.module('question', []).controller('questionController', function($scope)
 
             log(question, option, 'UNSELECT');
         } else {
-            if (question.selectMode.maxSelected === 1) {
+            if (maxSelected === 1) {
                 selectedOptions.forEach(function(option) {
                     option.isSelected = false;
                 });
                 option.isSelected = true;
             } else {
-                if (selectedOptions.length < question.selectMode.maxSelected) {
+                if (selectedOptions.length < maxSelected) {
                     option.isSelected = true;
                 } else {
-                    questionWarning.call(question);
+                    questionWarning(question);
                 }
             }
 
@@ -84,8 +84,8 @@ angular.module('question', []).controller('questionController', function($scope)
     $scope.onPrevQuestion = function() {
         if (validateAnswers() && $scope.currentGroupIndex > 0) {
             onSave();
+            $scope.currentGroupIndex--; 
             onLoad();
-            updateProgress(-1);
             scrollTop();
         }
     };
@@ -94,8 +94,8 @@ angular.module('question', []).controller('questionController', function($scope)
         var totalGroups = mockData.question.length;
         if (validateAnswers() && $scope.currentGroupIndex < totalGroups - 1) {
             onSave();
+            $scope.currentGroupIndex++;
             onLoad();
-            updateProgress(1);
             scrollTop();
         }
     };
@@ -110,8 +110,7 @@ angular.module('question', []).controller('questionController', function($scope)
         }, 500);
     }
 
-    function updateProgress(index) {
-        $scope.currentGroupIndex = $scope.currentGroupIndex + index;
+    function updateProgress() {
         $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100) + '%';
     }
 
@@ -125,7 +124,7 @@ angular.module('question', []).controller('questionController', function($scope)
             var maxSelected = question.selectMode.maxSelected;
             if (minSelected > selectedOptions.length || maxSelected < selectedOptions.length) {
                 isValid = false;
-                questionWarning.call(question);
+            questionWarning(question);
             }
         });
         if (!isValid) {
@@ -134,16 +133,15 @@ angular.module('question', []).controller('questionController', function($scope)
         return isValid;
     }
 
-    function questionWarning() {
-        var that = this;
-        this.warningMessage = '这个问题是必答题，且只能选择‘' + this.selectMode.maxSelected + '’个选项！';
+    function questionWarning(question) {
+        question.warningMessage = '这个问题是必答题，且只能选择‘' + question.selectMode.maxSelected + '’个选项！';
         setTimeout(function() {
-            that.warningMessage = '';
+            question.warningMessage = '';
             $scope.$digest();
-        }, 5000);
+        }, 3000);
     }
 
-    function onSave(oParam) {
+    function onSave() {
         //save logs
         oServices.saveLogs($scope.activityLog);
         $scope.activityLog = {};
@@ -162,8 +160,9 @@ angular.module('question', []).controller('questionController', function($scope)
         oServices.saveAnswers(result);
     }
 
-    function onLoad(oParam) {
-        oServices.getQuestions({}, function(data) {
+    function onLoad() {
+        oServices.getQuestions({ currentGroupIndex : $scope.currentGroupIndex}, function(data) {
+            updateProgress();
             $scope.questions = data;
             $scope.$digest();
         });
@@ -176,7 +175,7 @@ angular.module('question', []).controller('questionController', function($scope)
             $scope.activityLog[questionId] = {
                 activities: []
             };
-        };
+        }
         $scope.activityLog[questionId].activities.push({
             datetime: "Last Sync: " + currentDate.getDate() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getFullYear() + " @ " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds(),
             activity: activity,
@@ -185,7 +184,7 @@ angular.module('question', []).controller('questionController', function($scope)
     }
 
     //  ##################################################
-    //  oStatic
+    //  oStatic //TODO: need move to Static module
     //  ##################################################
     function initStatic() {
         var oStatic = {};
@@ -203,11 +202,11 @@ angular.module('question', []).controller('questionController', function($scope)
             getUrl: function(index) {
                 return oStatic.URL[index];
             }
-        }
+        };
     }
 
     //  ##################################################
-    //  Service
+    //  Service //TODO: need to move to Service module
     //  ##################################################
     function initService() {
         return {
@@ -221,7 +220,7 @@ angular.module('question', []).controller('questionController', function($scope)
                                 return u.id === userId;
                             });
                             if(users && users.length > 0){
-                                 currentGroupIndex = users[0].currentGroupIndex 
+                                 currentGroupIndex = users[0].currentGroupIndex;
                             }
                         }
                         fnSCallback && fnSCallback(mockData.question[currentGroupIndex]);
@@ -263,14 +262,14 @@ angular.module('question', []).controller('questionController', function($scope)
             }, {
                 id: 'I002',
                 name: 'GAOPENG',
-                currentGroupIndex: 2,
+                currentGroupIndex: 1,
                 isCompleted: false
             }, {
                 id: 'I003',
                 name: 'KKKK',
-                currentGroupIndex: 3,
+                currentGroupIndex: 2,
                 isCompleted: true
-            }, ],
+            } ],
             question: [
                 [{
                     id: 'q1',
