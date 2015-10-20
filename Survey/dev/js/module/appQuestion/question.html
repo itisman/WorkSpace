@@ -2,6 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <header>
     <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/animate.css">
     <link rel="stylesheet" type="text/css" ng-href="{{ themeUrl }}">
     <!-- <link rel="stylesheet" type="text/css" href="../../../../lib/bootstrap-3.3.5-dist/css/bootstrap.css"> --!>
 </header>
@@ -12,7 +13,7 @@
         <h1>{{ title }}</h1>
     </div>
     <div class='content'>
-        <div class="loading-screen ng-scope">
+        <div class="loading-screen hide">
             <div class="loading-wrap">
                 <div class="loading-box">
                     <div class="loading-animation">
@@ -46,7 +47,7 @@
         <div class="progress-wrap progress">
             <div class="progress-bar progress" ng-style=" { 'width' : currentProgress }"></div>
         </div> 
-        <div class= 'button-wrap'>
+        <div class= 'button-wrap swing'>
             <!-- <button id='button-prev' href="#" class="button button-prev" ng-click='onPrevQuestion()'>{{ prevButtonText }}</button> --!>
             <button id='button-next' href="#" class="button button-next" ng-click='onNextQuestion()'>{{ nextButtonText }}</button>
         </div>

@@ -28,3 +28,7 @@ body {
 .footer {
     text-align: center;
 }
+
+.hide{
+    display: none;
+}

@@ -1,5 +1,5 @@
 /*jslint devel: true, expr:true */ /*globals angular*/
-angular.module('about', []).controller('aboutController', function($scope) {
+angular.module('index', []).controller('indexController', function($scope) {
     'use strict';
 
     /**
