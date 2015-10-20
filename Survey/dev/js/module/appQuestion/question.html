@@ -2,7 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <header>
     <link rel="stylesheet" type="text/css" href="../../../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../../../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../../../../lib/animate.css">
     <link rel="stylesheet" type="text/css" ng-href="{{ themeUrl }}">
     <!-- <link rel="stylesheet" type="text/css" href="../../../../lib/bootstrap-3.3.5-dist/css/bootstrap.css"> --!>
 </header>
@@ -29,15 +29,15 @@
         <div ng-repeat='question in questions' class='question-wrap'>
             <div class='title'>
                 <p>{{ question.title }}</p>
-                <p class='warning'>{{ question.warningMessage }}</p>
+                <p class='warning jello' ng-class='{"animated": question.isWarning === true, "hide": question.isWarning !== true}'>{{ question.warningMessage }}</p>
             </div>
             <div class='options'>
-                <div class="option imgOption" ng-repeat='option in question.options' ng-if='option.img !== undefined'
+                <div class="option imgOption animated swing" ng-repeat='option in question.options' ng-if='option.img !== undefined'
                     ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'}>
                     <img ng-src="{{ option.img }}">
                     <p class='description'>{{ option.title}}</p>
                 </div>
-                <div class="option textOption" ng-repeat='option in question.options' ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'>
+                <div class="option textOption animated swing" ng-repeat='option in question.options' ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)' ng-class='{"selectedOption": option.isSelected === true}'>
                     <p class='description'>{{ option.title}}</p>
                 </div>
             </div>

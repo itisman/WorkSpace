@@ -11,7 +11,7 @@
 backend
 ----
 * 登陆用户或游客(get cookie) [DONE: 只有登陆用户]
-* 判断用户进度(intergrate with backend)
+* 判断用户进度(intergrate with backend) [DONE: request json {userId: '', currentGroupIndex: '', groupCount: ''}]
 	- 是否是第一次使用：第一页问题
 	- 是否已经完成: 直接显示最终结果页
 	- 是否完成到某一步：显示最近的一组题 

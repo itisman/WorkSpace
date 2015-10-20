@@ -35,17 +35,16 @@ angular.module('question', []).controller('questionController', function($scope)
     //Using to record the activities.
     $scope.activityLog = {};
 
+    //Using to forward cache more data;
+    $scope.cache = {};
+    $scope.cache.questions = {};
+
     //Using to record current question group index.
     $scope.currentGroupIndex = 0;
     var totalGroups = mockData.question.length;
     $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100) + '%';
 
-    oServices.getQuestions({
-        currentGroupIndex: $scope.currentGroupIndex
-    }, function(data) {
-        $scope.questions = data.questions;
-        $scope.$digest();
-    });
+    onLoad();
 
 
 
@@ -105,6 +104,23 @@ angular.module('question', []).controller('questionController', function($scope)
     //  ##################################################
     //  private function
     //  ##################################################
+    function forwardLoading(){
+    
+    }
+
+    function buildQuestionWarningMessage(questions){
+        questions.forEach(function(question){
+            var questionMode = '';
+            var maxSelection = '';
+            if(question.selectMode.minSelected > 0){
+                questionMode += '是必答题';
+            } else {
+                questionMode += '不是必答题';
+            }
+            question.warningMessage = '这个问题' + questionMode + '，且最多只能选择‘' + question.selectMode.maxSelected + '’个选项！';
+        });
+    }
+
     function scrollTop() {
         //window.scrollTo(0,0);
         $('html,body').animate({
@@ -136,11 +152,11 @@ angular.module('question', []).controller('questionController', function($scope)
     }
 
     function questionWarning(question) {
-        question.warningMessage = '这个问题是必答题，且只能选择‘' + question.selectMode.maxSelected + '’个选项！';
+        question.isWarning = true;
         setTimeout(function() {
-            question.warningMessage = '';
+            question.isWarning = false;
             $scope.$digest();
-        }, 3000);
+        }, 5000);
     }
 
     function onSave() {
@@ -163,13 +179,22 @@ angular.module('question', []).controller('questionController', function($scope)
     }
 
     function onLoad() {
+        function fnSCallback(data){
+            updateProgress();
+            buildQuestionWarningMessage(data.questions);
+            $scope.questions = data.questions;
+            $scope.currentGroupIndex = data.currentGroupIndex;
+            $scope.cache.questions[data.currentGroupIndex] = data;
+            $scope.$digest();
+            forwardLoading();
+        }
+        if($scope.cache.questions[$scope.currentGroupIndex]){
+             
+        }
         oServices.getQuestions({
             currentGroupIndex: $scope.currentGroupIndex
-        }, function(data) {
-            updateProgress();
-            $scope.questions = data.questions;
-            $scope.$digest();
-        });
+        }, fnSCallback);
+
     }
 
     function log(question, option, activity) {
@@ -228,7 +253,8 @@ angular.module('question', []).controller('questionController', function($scope)
                             }
                         }
                         fnSCallback && fnSCallback({
-                            questions: mockData.question[currentGroupIndex]
+                            questions: mockData.question[currentGroupIndex],
+                            currentGroupIndex: currentGroupIndex
                         });
                     }, 1000);
                 } else {
