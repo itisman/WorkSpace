@@ -10,7 +10,7 @@
 
 backend
 ----
-* 登陆用户或游客(get cookie)
+* 登陆用户或游客(get cookie) [DONE: 只有登陆用户]
 * 判断用户进度(intergrate with backend)
 	- 是否是第一次使用：第一页问题
 	- 是否已经完成: 直接显示最终结果页
@@ -29,11 +29,11 @@ css
 * 最终结果页（二维码关注）
 * Loading页面
 * Animations
-* Scroll to element
+* scroll to element
 
 logic
 ----
-* 多选处理
+* 多选处理  [DONE]
     - 需要判断最少和最多可以选择多少个 [DONE]
     - 选择完成才能进入下一页 [DONE]
 * 问题ID, 答案ID, 结果回传JSON [DONE]

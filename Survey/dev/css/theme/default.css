@@ -1,4 +1,39 @@
+/*********************  Animation  ******************/
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+@keyframes rotate {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+@-webkit-keyframes bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+        opacity: 0.2;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(0.3);
+        opacity: 0.2;
+    }
+    50% {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}
 /*********************  Option  ******************/
+
 .option {
     position: relative;
     display: inline-block;
@@ -20,7 +55,6 @@
     border: 5px solid #e6e6e6;
     color: #333;
 }
-
 .selectedOption.textOption {
     color: white;
     background-color: green;
@@ -28,8 +62,7 @@
 .selectedOption.imgOption {
     border-color: #4CB76D;
 }
-
-.imgOption .description{
+.imgOption .description {
     position: absolute;
     bottom: 0px;
     background-color: white;
@@ -38,34 +71,27 @@
     background-color: rgba(0, 0, 0, 0.6);
     line-height: 1.5em;
 }
-
 .textOption .description {
     padding: 10px;
 }
-
 /*********************  Question  ******************/
-.questions {
-    clear: both;
-    text-align: center;
-}
+
 .question-wrap {
     width: 90%;
     margin: 0 auto;
 }
 .question-wrap .title {
-    float: none;
     margin: 50px 0 10 0px;
     color: rgba(119, 122, 121, 1);
     font-size: larger;
 }
-.question-wrap .title .warning{
+.question-wrap .title .warning {
     color: #c33;
     font-weight: 100;
     font-size: medium;
 }
-
-
 /*********************  Button  ******************/
+
 .button {
     width: 45%;
     height: 3em;
@@ -74,12 +100,11 @@
     color: white;
     cursor: pointer;
 }
-
 .button-wrap {
     margin: 2em 0 1em 0;
 }
-
 /*********************  Progress  ******************/
+
 .progress {
     width: 100%;
     height: 10px;
@@ -96,9 +121,73 @@
     position: absolute;
     top: 0;
 }
+/*********************  Loading  ******************/
 
-
-/*********************  Header  ******************/
-.header {
+.loading-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(249, 255, 249, 0.38);
     text-align: center;
+    z-index: 20;
+}
+.loading-screen .loading-wrap {
+    display: table;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+.loading-screen .loading-box {
+    display: table-cell;
+    padding-bottom: 40px;
+    vertical-align: middle;
+    display: table-cell;
+}
+.loading-screen .loading-animation {
+    margin: 0 auto 40px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    text-align: center;
+    -webkit-animation: rotate 3s infinite linear;
+    animation: rotate 3s infinite linear;
+}
+.loading-screen .loading-text {
+    font-size: 16px;
+    color: #333;
+}
+.loading-screen .loading-animation .dot1,
+.loading-screen .loading-animation .dot2,
+.loading-screen .loading-animation .dot3 {
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+    position: absolute;
+    background-color: #4CB76D;
+    border-radius: 100%;
+    -webkit-animation: bounce 3s infinite ease-in-out;
+    animation: bounce 3s infinite ease-in-out;
+}
+.loading-screen .loading-animation .dot1 {
+    top: -5%;
+    left: 50%;
+    margin-left: -25%;
+    -webkit-animation-delay: -3s;
+    animation-delay: -3s;
+}
+.loading-screen .loading-animation .dot2 {
+    bottom: 11%;
+    right: 0;
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+}
+.loading-screen .loading-animation .dot3 {
+    bottom: 11%;
+    left: 0;
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
 }

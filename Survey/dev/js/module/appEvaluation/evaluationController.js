@@ -1,5 +1,5 @@
 /*jslint devel: true, expr:true */ /*globals angular*/
-angular.module('question', []).controller('questionController', function($scope) {
+angular.module('evaluation', []).controller('evaluationController', function($scope) {
     'use strict';
 
     /**
@@ -59,7 +59,7 @@ angular.module('question', []).controller('questionController', function($scope)
         var minSelected = question.selectMode.minSelected;
         var maxSelected = question.selectMode.maxSelected;
         if (option.isSelected === true) {
-            if (maxSelected > 1 || selectedOptions.length > minSelected) {
+            if (selectedOptions.length > minSelected) {
                 option.isSelected = false;
             }
 

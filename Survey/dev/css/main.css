@@ -4,6 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 * {
     margin: 0 auto;
     padding: 0;
@@ -16,7 +17,14 @@
     -ms-user-select: none;
     user-select: none;
 }
+
 body {
     background-image: linear-gradient(rgb(255, 255, 255) 0px, rgb(205, 242, 222) 100%);
     max-width: 1024px;
+}
+
+.header,
+.content,
+.footer {
+    text-align: center;
 }
