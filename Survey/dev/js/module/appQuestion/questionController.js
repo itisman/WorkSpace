@@ -1,5 +1,5 @@
 /*jslint devel: true, expr:true */ /*globals angular*/
-angular.module('question', []).controller('questionController', function($scope) {
+angular.module('question', []).controller('questionController', function($scope, $timeout) {
     'use strict';
 
     /**
@@ -36,8 +36,8 @@ angular.module('question', []).controller('questionController', function($scope)
     $scope.activityLog = {};
 
     //Using to forward cache more data;
-    $scope.cache = {};
-    $scope.cache.questions = {};
+    var cache = {};
+    cache.questions = {};
 
     //Using to record current question group index.
     $scope.currentGroupIndex = 0;
@@ -45,8 +45,6 @@ angular.module('question', []).controller('questionController', function($scope)
     $scope.currentProgress = Math.floor(($scope.currentGroupIndex + 1) / totalGroups * 100) + '%';
 
     onLoad();
-
-
 
     //  ##################################################
     //  Event
@@ -83,8 +81,8 @@ angular.module('question', []).controller('questionController', function($scope)
     };
 
     $scope.onPrevQuestion = function() {
+        onSave();
         if (validateAnswers() && $scope.currentGroupIndex > 0) {
-            onSave();
             $scope.currentGroupIndex--;
             onLoad();
             scrollTop();
@@ -93,21 +91,19 @@ angular.module('question', []).controller('questionController', function($scope)
 
     $scope.onNextQuestion = function() {
         var totalGroups = mockData.question.length;
+        onSave();
         if (validateAnswers() && $scope.currentGroupIndex < totalGroups - 1) {
-            onSave();
             $scope.currentGroupIndex++;
             onLoad();
             scrollTop();
+        } else {
+            var evaluationPage = window.open(oStatic.getUrl('EVALUATION'), '_self');
         }
     };
 
     //  ##################################################
     //  private function
     //  ##################################################
-    function forwardLoading(){
-    
-    }
-
     function buildQuestionWarningMessage(questions){
         questions.forEach(function(question){
             var questionMode = '';
@@ -178,22 +174,37 @@ angular.module('question', []).controller('questionController', function($scope)
         oServices.saveAnswers(result);
     }
 
+    function forwardLoading(){
+        var forwardGroupIndex = $scope.currentGroupIndex + 1;
+        if(!cache.questions[forwardGroupIndex]){ 
+            oServices.getQuestions({
+                currentGroupIndex: forwardGroupIndex
+            }, function(data){
+                cache.questions[forwardGroupIndex] = data;
+            });
+        }
+    }
+
     function onLoad() {
         function fnSCallback(data){
             updateProgress();
             buildQuestionWarningMessage(data.questions);
             $scope.questions = data.questions;
             $scope.currentGroupIndex = data.currentGroupIndex;
-            $scope.cache.questions[data.currentGroupIndex] = data;
-            $scope.$digest();
+            cache.questions[data.currentGroupIndex] = data;
             forwardLoading();
+            $timeout(function(){
+                $scope.$digest();
+            });
+            
         }
-        if($scope.cache.questions[$scope.currentGroupIndex]){
-             
+        if(cache.questions[$scope.currentGroupIndex]){
+            fnSCallback(cache.questions[$scope.currentGroupIndex]);
+        } else {
+            oServices.getQuestions({
+                currentGroupIndex: $scope.currentGroupIndex
+            }, fnSCallback);
         }
-        oServices.getQuestions({
-            currentGroupIndex: $scope.currentGroupIndex
-        }, fnSCallback);
 
     }
 
@@ -224,6 +235,8 @@ angular.module('question', []).controller('questionController', function($scope)
         oStatic.TEXT.PAGE_TITLE = '';
         oStatic.URL.LOGO = '../../../../resource/img/logo_be22f55.png';
         oStatic.URL.THEME = '../../../css/theme/default.css';
+        oStatic.URL.EVALUATION = '../appEvaluation/evaluation.html';
+
         return {
             getText: function(index) {
                 return oStatic.TEXT[index];
