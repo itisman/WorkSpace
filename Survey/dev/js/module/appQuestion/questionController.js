@@ -1,6 +1,12 @@
 /*jslint devel: true, expr:true */ /*globals angular*/
-angular.module('question', []).controller('questionController', function($scope, $timeout) {
-    'use strict';
+// Declare app level module which depends on views, and components
+angular.module('myApp', [
+  'question',
+  'service'
+]);
+
+
+angular.module('question', []).controller('questionController', ['$scope', '$timeout','serviceController', function($scope, $timeout, service) {
 
     /**
         $http.get('../resource/json/questions.json').success(function(data) {
@@ -10,6 +16,7 @@ angular.module('question', []).controller('questionController', function($scope,
         });
     */
 
+    var test = service;
 
     //  ##################################################
     //  Init
@@ -481,4 +488,4 @@ angular.module('question', []).controller('questionController', function($scope,
             ]
         };
     }
-});
+}]);
