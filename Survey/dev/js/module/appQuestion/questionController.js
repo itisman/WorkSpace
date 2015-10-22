@@ -40,7 +40,8 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
     //};
 
     //Using to record the activities.
-    $scope.activityLog = {};
+    $scope.activityLog = [];
+    log({activity:'INIT'});
 
     //Using to forward cache more data;
     var cache = {};
@@ -67,7 +68,7 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
                 option.isSelected = false;
             }
 
-            log(question, option, 'UNSELECT');
+            log({question:question, option:option, activity:'UNSELECT'});
         } else {
             if (maxSelected === 1) {
                 selectedOptions.forEach(function(option) {
@@ -82,7 +83,7 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
                 }
             }
 
-            log(question, option, 'SELECT');
+            log({question:question, option:option, activity:'SELECT'});
         }
 
     };
@@ -98,13 +99,20 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
 
     $scope.onNextQuestion = function() {
         var totalGroups = mockData.question.length;
-        onSave();
-        if (validateAnswers() && $scope.currentGroupIndex < totalGroups - 1) {
-            $scope.currentGroupIndex++;
-            onLoad();
-            scrollTop();
+        if (validateAnswers()){
+            if($scope.currentGroupIndex < totalGroups - 1) {
+                log({activity:'NEXT_SUCCEED'});
+                onSave();
+                $scope.currentGroupIndex++;
+                onLoad();
+                scrollTop();
+            } else {
+                log({activity:'COMPLETED'});
+                onSave();
+                //window.open(oStatic.getUrl('EVALUATION'), '_self');
+            }
         } else {
-            var evaluationPage = window.open(oStatic.getUrl('EVALUATION'), '_self');
+            log({activity:'NEXT_FAILED'});
         }
     };
 
@@ -114,7 +122,6 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
     function buildQuestionWarningMessage(questions){
         questions.forEach(function(question){
             var questionMode = '';
-            var maxSelection = '';
             if(question.selectMode.minSelected > 0){
                 questionMode += '是必答题';
             } else {
@@ -165,7 +172,7 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
     function onSave() {
         //save logs
         oServices.saveLogs($scope.activityLog);
-        $scope.activityLog = {};
+        $scope.activityLog = [];
 
         //save result
         var result = {};
@@ -215,18 +222,24 @@ angular.module('question', []).controller('questionController', ['$scope', '$tim
 
     }
 
-    function log(question, option, activity) {
-        var currentDate = new Date();
-        var questionId = question.id;
-        if (!$scope.activityLog[questionId]) {
-            $scope.activityLog[questionId] = {
-                activities: []
-            };
+    function log(param) {
+        if(!param){
+            return; 
         }
-        $scope.activityLog[questionId].activities.push({
+        var questionId, optionId;
+        if(param && param.question && param.question.id){
+            questionId =  param.question.id;
+        }
+        if(param && param.option && param.option.id){
+            optionId =  param.option.id;
+        }
+        var currentDate = new Date();
+        $scope.activityLog.push({
             datetime: "Last Sync: " + currentDate.getDate() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getFullYear() + " @ " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds(),
-            activity: activity,
-            option: option.id
+            activity: param.activity,
+            option: optionId,
+            question: questionId,
+            currentGroupIndex: $scope.currentGroupIndex
         });
     }
 
