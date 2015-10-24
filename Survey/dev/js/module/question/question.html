@@ -1,0 +1,48 @@
+<div class='header'>
+    <img ng-src="{{ logoUrl }}" class='logo'>
+    <h1>{{ title }}</h1>
+</div>
+<div class='content'>
+    <div class="loading-screen hide">
+        <div class="loading-wrap">
+            <div class="loading-box">
+                <div class="loading-animation">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
+                    <div class="dot3"></div>
+                </div>
+                <div class="loading-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat='question in questions' class='question-wrap'>
+        <div class='title'>
+            <p>{{ question.title }}</p>
+            <p class='warning jello' ng-class='{"animated": question.isWarning === true, "hide": question.isWarning !== true}'>{{ question.warningMessage }}</p>
+        </div>
+        <div class='options'>
+            <div class="option imgOption animated swing" ng-repeat='option in question.options'
+            ng-if='option.img !== undefined' ng-click='onSelectOption($event, question, option)'
+            ng-class='{"selectedOption": option.isSelected === true}' }>
+                <img ng-src="{{ option.img }}">
+                <p class='description'>{{ option.title}}</p>
+            </div>
+            <div class="option textOption animated swing" ng-repeat='option in question.options'
+            ng-if='option.img === undefined' ng-click='onSelectOption($event, question, option)'
+            ng-class='{"selectedOption": option.isSelected === true}'>
+                <p class='description'>{{ option.title}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='footer'>
+    <div class="progress-wrap progress">
+        <div class="progress-bar progress" ng-style=" { 'width' : currentProgress }"></div>
+    </div>
+    <div class='button-wrap swing'>
+        <!-- <button id='button-prev' href="#" class="button button-prev" ng-click='onPrevQuestion()'>{{ prevButtonText }}</button> --!>
+            <button id='button-next' href="#" class="button button-next" ng-click='onNextQuestion()'>{{ nextButtonText }}</button>
+        </div>
+    </div>
+</div>
